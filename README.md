@@ -5,6 +5,7 @@
 A secure web application for keeping track of movies/shows you still want to watch or have already watched.
 The records of this will be account bound, so to be able to create a list, an account has to first be created.
 <br><br>
+```
 The application will be fairly simple, but here are the general steps:
 1. Create an account.
 2. Login with the newly created account.
@@ -21,6 +22,7 @@ The application will be fairly simple, but here are the general steps:
      - Optional fields include number of episodes, director/writer name, and uploading a picture.
 6. Save the list.
 7. Option for editing the list (deleting, editing, and adding movies/shows in the list)
+```
 
 I will develop this project with later expansion in mind. It is something I wanted to develop as a hobby already 
 and in the future add features like adding it to a planning and syncing that planning with online calendars, 
