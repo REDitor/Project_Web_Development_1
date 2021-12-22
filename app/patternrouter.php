@@ -39,7 +39,7 @@ class PatternRouter
         $methodName = $explodedUri[1];
 
         //set controller directory
-        $filename = __DIR__ . 'controllers' . $controllerName . '.php';
+        $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
         if ($api)
             $filename = __DIR__ . '/api/controllers/' . $controllerName . '.php';
         if (file_exists($filename)) {
