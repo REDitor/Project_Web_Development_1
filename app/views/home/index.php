@@ -5,11 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
-<!--    FIXME: stylesheet not working -->
     <link rel="stylesheet" href="../../../css/style.css">
-    <script src="https://kit.fontawesome.com/51a8c10d85.js" crossorigin="anonymous"></script>
     <title>Curtains | Home</title>
 </head>
 
@@ -21,18 +17,18 @@
         </h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#shows">Shows</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="">Movies</a></li>
+                <li><a href="">Shows</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
             </ul>
         </nav>
     </section>
 
     <section class="content">
         <H1>Too much to watch but so little time?</H1>
-        <p>No worries. With our website you can create multiple watch lists and decide what you want to watch and when you want to watch it.<br> The best new is, it's completely Free! Sign up now and start your Cinematic Journey!</p>
+        <p>No worries. With our website you can create multiple watch lists and decide what you want to watch and when you want to watch it.<br> The best news is, it's completely Free! Sign up now and start your Cinematic Journey!</p>
         <a href="#about" class="btn"><i class="fas fa-chevron-right"></i> Create an account</a>
     </section>
 </header>
@@ -44,12 +40,13 @@
         <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
         <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
     </section>
-    <p>Copyright &copy; 2021 - EdgeLedger</p>
+    <p>Copyright &copy; 2021 - Curtains</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/51a8c10d85.js" crossorigin="anonymous"></script>
 
 </body>
 
