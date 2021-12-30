@@ -8,7 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-	<title>Curt'ns | Home</title>
+	<title>Curtains | Home</title>
 	<style>
 		#showcase {
 			height: 100vh;
@@ -16,15 +16,15 @@
 	</style>
 </head>
 
-<!--FIXME: fix navbar sizing-->
-<!--FIXME: -->
+<!--FIXME: push showcase down-->
+<!--FIXME: remove whitespace under footer-->
 
 <body class="bg-white text-dark">
 	<header class="main-header">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 			<h1 class="ms-3">
 				<span class="text-danger"><i class="fas fa-video"></i> Curt</span><span
-					class="text-light">'ns</span>
+					class="text-light">ains</span>
 			</h1>
 			<section class="container">
 				<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
