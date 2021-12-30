@@ -9,6 +9,11 @@
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
 	<title>Curt'ns | Home</title>
+	<style>
+		#showcase {
+			height: 100vh;
+		}
+	</style>
 </head>
 
 <!--FIXME: fix navbar sizing-->
@@ -16,7 +21,7 @@
 
 <body class="bg-white text-dark">
 	<header class="main-header">
-		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 			<h1 class="ms-3">
 				<span class="text-danger"><i class="fas fa-video"></i> Curt</span><span
 					class="text-light">'ns</span>
@@ -37,9 +42,8 @@
 			</section>
 		</nav>
 
-		<section class="jumbotron jumbotron-fluid bg-light text-dark text-center pt-3 pb-3">
-			<section class="container">
-				<img src="../../../img/Cinema Seats.png" alt="Cinema Seats">
+		<section id="showcase" class="jumbotron jumbotron-fluid bg-light text-dark text-center pt-3 pb-3">
+			<section class="container align-center">
 				<h1 class="display-4">Short on time?</h1>
 				<p class="lead">Create your own watch lists and plan your movie nights.<br> The best news is, it's completely Free! Sign up now and start your
 					Cinematic Journey!</p>
@@ -48,14 +52,14 @@
 		</section>
 	</header>
 
-	<footer class="footer bg-dark">
+	<footer class="footer bg-dark m-0">
 		<section class="social">
 			<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
 			<a href="#"><i class="fab fa-twitter fa-2x"></i></a>
 			<a href="#"><i class="fab fa-youtube fa-2x"></i></a>
 			<a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
 		</section>
-		<p>Copyright &copy; 2021 - Curtains</p>
+		<p class="text-light">Copyright &copy; 2021 - Curtains</p>
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
