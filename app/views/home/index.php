@@ -10,48 +10,94 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
 	<title>Curtains | Home</title>
 	<style>
-		#showcase {
+		body {
+			font-family: 'Open Sans', sans-serif;
+			background: #fff;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		.logo {
+			flex: none;
+			font-weight: 400;
+		}
+
+		.navbar {
+			opacity: 0.8;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		
+		.navbar a:hover {
+			border-bottom: #df4759 1px solid;
+		}
+
+		.hero {
+			background: url("../../../img/Cinema_Seats.png") no-repeat center/cover;
 			height: 100vh;
+			position: relative;
+			color: #fff;
+		}
+
+		.hero .content {
+			flex-direction: column;
+		}
+
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+
+		.hero * {
+			z-index: 10;
 		}
 	</style>
 </head>
 
-<!--FIXME: push showcase down-->
 <!--FIXME: remove whitespace under footer-->
+<!--FIXME: imges and css not loading (from seperate files)-->
 
 <body class="bg-white text-dark">
-	<header class="main-header">
-		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-			<h1 class="ms-3">
-				<span class="text-danger"><i class="fas fa-video"></i> Curt</span><span
-					class="text-light">ains</span>
+	<header class="hero">
+		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+			<h1 class="logo ms-4">
+				<span class="text-danger"><i class="fas fa-video"></i> Cur</span>tains
 			</h1>
-			<section class="container">
-				<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navBurger">
-					<ul class="navbar-nav ms-auto">
-						<li class="nav-item"><a class="nav-link h6" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link h6" href="">Movies</a></li>
-						<li class="nav-item"><a class="nav-link h6" href="">Shows</a></li>
-						<li class="nav-item"><a class="nav-link h6" href="">About</a></li>
-						<li class="nav-item"><a class="nav-link h6" href="">Contact</a></li>
-					</ul>
-				</div>
-			</section>
-		</nav>
+			<nav>
+				<section class="container">
+					<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navBurger">
+						<ul class="navbar-nav">
+							<li class="nav-item me-3"><a class="nav-link h6" href="#">Home</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="">Movies</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="">Shows</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="">About</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="">Contact</a></li>
+							<!--				    TODO: Add profile + dropdown -->
+						</ul>
+					</div>
+				</section>
+			</nav>
+		</section>
 
-		<section id="showcase" class="jumbotron jumbotron-fluid bg-light text-dark text-center pt-3 pb-3">
-			<section class="container align-center">
-				<h1 class="display-4">Short on time?</h1>
-				<p class="lead">Create your own watch lists and plan your movie nights.<br> The best news is, it's completely Free! Sign up now and start your
-					Cinematic Journey!</p>
-				<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i>  Create an account</a>
-			</section>
+		<section
+			class="content jumbotron jumbotron-fluid bg-light text-dark d-flex justify-content-center align-items-center text-center h-100 pt-3 pb-3">
+			<h1 class="display-4">The Ultimate Climax</h1>
+			<p class="lead">Start your Cinematic Journey!
+			</p>
+			<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i> Create an account</a>
 		</section>
 	</header>
-
+	
 	<footer class="footer bg-dark m-0">
 		<section class="social">
 			<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
