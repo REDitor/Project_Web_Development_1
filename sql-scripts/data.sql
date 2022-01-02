@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Tabelstructuur voor tabel `items`
 --
 
-CREATE TABLE `items` (
+CREATE TABLE if not exists `items` (
   `itemId` int(11) NOT NULL,
   `watchlistId` int(11) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `items` (
 -- Tabelstructuur voor tabel `movies`
 --
 
-CREATE TABLE `movies` (
+CREATE TABLE if not exists `movies` (
   `itemId` int(11) NOT NULL,
   `durationInMinutes` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -52,7 +52,7 @@ CREATE TABLE `movies` (
 -- Tabelstructuur voor tabel `shows`
 --
 
-CREATE TABLE `shows` (
+CREATE TABLE if not exists `shows` (
   `itemId` int(11) NOT NULL,
   `number_of_episodes` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -63,7 +63,7 @@ CREATE TABLE `shows` (
 -- Tabelstructuur voor tabel `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE if not exists `users` (
   `userId` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `users` (
 -- Tabelstructuur voor tabel `watchlists`
 --
 
-CREATE TABLE `watchlists` (
+CREATE TABLE if not exists `watchlists` (
   `watchlistId` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
   `name` varchar(500) DEFAULT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `watchlists` (
 -- Tabelstructuur voor tabel `watchlist_item_junction`
 --
 
-CREATE TABLE `watchlist_item_junction` (
+CREATE TABLE if not exists `watchlist_item_junction` (
   `watchlistId` int(11) NOT NULL,
   `itemId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
