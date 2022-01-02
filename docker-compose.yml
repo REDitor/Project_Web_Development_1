@@ -20,7 +20,7 @@ services:
         image: mariadb:latest
         env_file: env/mariadb.env
         volumes:
-            - "./app/sql-scripts/data.sql:/docker-entrypoint-initdb.d/data.sql"
+            - "./sql-scripts/data.sql:/docker-entrypoint-initdb.d/data.sql"
         ports:
             - 3306:3306
 

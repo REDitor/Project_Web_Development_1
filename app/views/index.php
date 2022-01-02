@@ -30,12 +30,12 @@
 			justify-content: space-between;
 		}
 		
-		.navbar a:hover {
+		.navbar ul a:hover {
 			border-bottom: #df4759 1px solid;
 		}
 
 		.hero {
-			background: url("../../img/Cinema_Seats.png") no-repeat center/cover;
+			background: url("../../img/home/Cinema_Seats.png") no-repeat center/cover;
 			height: 100vh;
 			position: relative;
 			color: #fff;
@@ -67,9 +67,11 @@
 <body class="bg-white text-dark">
 	<header class="hero">
 		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-			<h1 class="logo ms-4 mt-1">
-				<span class="text-danger"><i class="fas fa-video"></i> Cur</span>tains
-			</h1>
+			<a href="home" class="text-decoration-none">
+				<h1 class="logo ms-4 mt-2">
+					<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span class="text-white">tains</span>
+				</h1>
+			</a>
 			<nav>
 				<section class="container">
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
@@ -77,11 +79,11 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navBurger">
 						<ul class="navbar-nav">
-							<li class="nav-item me-3"><a class="nav-link h6" href="#">Home</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Movies</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Shows</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">About</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Contact</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6 active" href="home">Home</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="movies">Movies</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="shows">Shows</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="about">About</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="contact">Contact</a></li>
 							<!--				    TODO: Add profile + dropdown -->
 						</ul>
 					</div>

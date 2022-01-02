@@ -8,7 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/jpg" href="../../img/favicon/favicon.svg"/>
+	<link rel="shortcut icon" type="image/jpg" href="../../img/favicon/favicon.svg" />
 	<title>Curtains | Movies</title>
 	<style>
 		body {
@@ -29,29 +29,10 @@
 			justify-content: space-between;
 		}
 
-		.navbar a:hover {
+		.navbar ul a:hover {
 			border-bottom: #df4759 1px solid;
 		}
 
-		.hero {
-			background: url("../../img/Cinema_Seats.png") no-repeat center/cover;
-			position: relative;
-			color: #fff;
-		}
-
-		.hero::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-
-
-		.hero * {
-			z-index: 10;
-		}
 	</style>
 </head>
 
@@ -61,9 +42,11 @@
 <body class="bg-white text-dark">
 	<header class="hero">
 		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-			<h1 class="logo ms-4 mt-1">
-				<span class="text-danger"><i class="fas fa-video"></i> Cur</span>tains
-			</h1>
+			<a href="home" class="text-decoration-none">
+				<h1 class="logo ms-4 mt-2">
+					<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span class="text-white">tains</span>
+				</h1>
+			</a>
 			<nav>
 				<section class="container">
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
@@ -71,11 +54,11 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navBurger">
 						<ul class="navbar-nav">
-							<li class="nav-item me-3"><a class="nav-link h6" href="#">Home</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Movies</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Shows</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">About</a></li>
-							<li class="nav-item me-3"><a class="nav-link h6" href="">Contact</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="home">Home</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6 active" href="movies">Movies</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="shows">Shows</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="about">About</a></li>
+							<li class="nav-item me-3"><a class="nav-link h6" href="contact">Contact</a></li>
 							<!--				    TODO: Add profile + dropdown -->
 						</ul>
 					</div>
@@ -83,6 +66,8 @@
 			</nav>
 		</section>
 	</header>
+
+
 
 	<footer class="footer bg-dark m-0">
 		<section class="social">
