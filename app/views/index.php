@@ -8,6 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/jpg" href="../../img/favicon/favicon.svg"/>
 	<title>Curtains | Home</title>
 	<style>
 		body {
@@ -34,7 +35,7 @@
 		}
 
 		.hero {
-			background: url("../../../img/Cinema_Seats.png") no-repeat center/cover;
+			background: url("../../img/Cinema_Seats.png") no-repeat center/cover;
 			height: 100vh;
 			position: relative;
 			color: #fff;
@@ -54,7 +55,6 @@
 			background: rgba(0, 0, 0, 0.6);
 		}
 
-
 		.hero * {
 			z-index: 10;
 		}
@@ -67,7 +67,7 @@
 <body class="bg-white text-dark">
 	<header class="hero">
 		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-			<h1 class="logo ms-4">
+			<h1 class="logo ms-4 mt-1">
 				<span class="text-danger"><i class="fas fa-video"></i> Cur</span>tains
 			</h1>
 			<nav>
@@ -92,7 +92,7 @@
 		<section
 			class="content jumbotron jumbotron-fluid bg-light text-dark d-flex justify-content-center align-items-center text-center h-100 pt-3 pb-3">
 			<h1 class="display-4">The Ultimate Climax</h1>
-			<p class="lead">Start your Cinematic Journey!
+			<p class="lead">Create your own watch lists and start your Cinematic Journey!
 			</p>
 			<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i> Create an account</a>
 		</section>

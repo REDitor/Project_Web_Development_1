@@ -6,7 +6,6 @@ class Item
     private WatchList $movies;
     private string $title;
     private string $writer;
-    private $image;
 
     /**
      * @param int $id
