@@ -23,12 +23,6 @@
             font-weight: 400;
         }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
         .navbar ul a:hover {
             border-bottom: #df4759 1px solid;
         }
@@ -46,23 +40,25 @@
                     <span class="text-danger"><i class="fas fa-video"></i> Cur</span><span class="text-white">tains</span>
                 </h1>
             </a>
-            <nav>
-                <section class="container">
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navBurger">
-                        <ul class="navbar-nav">
-                            <li class="nav-item me-3"><a class="nav-link h6" href="home">Home</a></li>
-                            <li class="nav-item me-3"><a class="nav-link h6" href="movies">Movies</a></li>
-                            <li class="nav-item me-3"><a class="nav-link h6 active" href="shows">Shows</a></li>
-                            <li class="nav-item me-3"><a class="nav-link h6" href="about">About</a></li>
-                            <li class="nav-item me-3"><a class="nav-link h6" href="contact">Contact</a></li>
-                            <!--				    TODO: Add profile + dropdown -->
-                        </ul>
-                    </div>
-                </section>
-            </nav>
+	        <nav class="w-75">
+		        <section class="container">
+			        <button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
+				        <span class="navbar-toggler-icon"></span>
+			        </button>
+			        <div class="collapse navbar-collapse" id="navBurger">
+				        <ul class="navbar-nav m-auto">
+					        <li class="nav-item"><a class="nav-link h6" href="home">Home</a></li>
+					        <li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
+					        <li class="nav-item"><a class="nav-link h6 active" href="shows">Shows</a></li>
+					        <li class="nav-item"><a class="nav-link h6" href="about">About</a></li>
+					        <li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>
+				        </ul>
+				        <ul class="navbar-nav">
+					        <li class="nav-item"><a class="nav-link h6" href="#">Login</a></li>
+				        </ul>
+			        </div>
+		        </section>
+	        </nav>
         </section>
     </header>
 
