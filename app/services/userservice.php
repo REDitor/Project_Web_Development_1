@@ -1,11 +1,12 @@
 <?php
-require __DIR__ . '../repositories/userrepository.php';
+require __DIR__ . '/../repositories/userrepository.php';
 
 class UserService
 {
     public function getByUsername($username) {
         $repository = new UserRepository();
-        return $repository->getByUsername($username);
+        $user = $repository->getByUsername($username);
+        return $user;
     }
 
     public function insertUser($user) {
