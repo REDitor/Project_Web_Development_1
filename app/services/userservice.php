@@ -3,10 +3,9 @@ require __DIR__ . '/../repositories/userrepository.php';
 
 class UserService
 {
-    public function getByUsername($username) {
+    public function getByUsernameAndPassword($username, $password) {
         $repository = new UserRepository();
-        $user = $repository->getByUsername($username);
-        return $user;
+        return $repository->getByUsernameAndPassword($username, $password);
     }
 
     public function insertUser($user) {

@@ -2,17 +2,16 @@
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/user.php';
 
-class UserRepository extends Repository
-{
-    function getByUsername($username) {
+class UserRepository extends Repository {
+    function getByUsernameAndPassword($username, $password) {
         try {
             $stmt = $this->connection->prepare("SELECT userId, username, password, email 
                                                 FROM users 
-                                                WHERE username=$username");
+                                                WHERE username=$username
+                                                AND password=$password");
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-            $user = $stmt->fetch();
-            return $user;
+            return $stmt->fetch();
         } catch (PDOException $pdeo) {
             echo $pdeo;
         }

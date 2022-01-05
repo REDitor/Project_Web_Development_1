@@ -9,9 +9,7 @@ if (isset($_POST['login'])) {
 		$password = md5($_POST['passwordLogin']);
 
 		$user_service = new UserService();
-		$user = $user_service->getByUsername($username);
-		$_SESSION['username'] = $user->getUsername();
-		echo $_SESSION['username'];
+		$_SESSION['user'] = $user_service->getByUsernameAndPassword($username, $password);
 		header('location: home');
 	}
 }

@@ -2,20 +2,20 @@
 
 class User
 {
-    private int $id;
+    private int $userId;
     private string $username;
     private string $password;
     private string $email;
 
     /**
-     * @param int $id
+     * @param int $userId
      * @param string $username
      * @param string $password
      * @param string $email
      */
-    public function __construct(int $id, string $username, string $password, string $email)
+    public function __construct(int $userId, string $username, string $password, string $email)
     {
-        $this->id = $id;
+        $this->userId = $userId;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
@@ -24,9 +24,9 @@ class User
     /**
      * @return int
      */
-    public function getId(): int
+    public function getUserId(): int
     {
-        return $this->id;
+        return $this->userId;
     }
 
     /**
