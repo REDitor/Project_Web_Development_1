@@ -44,54 +44,9 @@ if (isset($_SESSION['user'])) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/app/public/img/favicon/favicon.svg" />
 	<title>Curtains | Home</title>
-	<style>
-		body {
-			font-family: 'Open Sans', sans-serif;
-			background: #fff;
-			color: #333;
-			line-height: 1.6;
-		}
-
-		.logo {
-			flex: none;
-			font-weight: 400;
-		}
-
-		.navbar ul a:hover {
-			border-bottom: #df4759 1px solid;
-		}
-
-		.hero {
-			background: url("../../../img/home/Cinema_Seats.png") no-repeat center/cover;
-			height: 100vh;
-			position: relative;
-			color: #fff;
-		}
-
-		.hero .content {
-			flex-direction: column;
-		}
-
-		.hero::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0, 0, 0, 0.6);
-		}
-
-		.hero * {
-			z-index: 10;
-		}
-
-		#navbar {
-			z-index: 9999;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <!--FIXME: imges and css not loading (from seperate files)-->
 <!--FIXME: hide registration form if logged in + replace hero with welcome message-->
@@ -159,7 +114,7 @@ if (isset($_SESSION['user'])) {
 		</section>
 
 		<section
-			class="content jumbotron jumbotron-fluid bg-light text-light d-flex justify-content-center align-items-center text-center h-100 pt-3 pb-3">
+			class="content jumbotron jumbotron-fluid text-light d-flex justify-content-center align-items-center text-center h-100 pt-3 pb-3">
 			<?php
 			if (!isset($_SESSION['user'])) {
 				echo $_SESSION['user'];
