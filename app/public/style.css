@@ -10,8 +10,6 @@ body {
     font-weight: 400;
 }
 
-
-
 .navbar ul a:hover {
     border-bottom: #df4759 1px solid;
 }
@@ -43,4 +41,11 @@ body {
 
 #navbar {
     z-index: 9999;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 2600px) {
+    nav {
+        position: absolute;
+        width: 100%;
+    }
 }

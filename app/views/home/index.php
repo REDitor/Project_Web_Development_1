@@ -51,23 +51,24 @@ if (isset($_SESSION['user'])) {
 <!--FIXME: hide registration form if logged in + replace hero with welcome message-->
 <!--FIXME: userservice returns a bool, not a user-->
 <!--TODO: make favicon color danger-->
+<!--TODO: Header text center incl button-->
 
 
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
 		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-			<a href="" class="text-decoration-none">
+			<a href="" class="text-decoration-none d-inline-block">
 				<h1 class="logo ms-4 mt-2">
 					<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span
 						class="text-white">tains</span>
 				</h1>
 			</a>
-			<nav class="w-75">
+			<nav>
 				<section class="container">
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navBurger">
+					<div class="collapse navbar-collapse m-auto" id="navBurger">
 						<ul class="navbar-nav m-auto">
 							<li class="nav-item"><a class="nav-link h6 active" href="">Home</a></li>
 							<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
@@ -150,7 +151,7 @@ if (isset($_SESSION['user'])) {
 				       class="form-control mb-3">
 				<button name="register" class="col-12 btn btn-danger btn-block">Register</button>
 				<p class="mt-4">Already have an account? <a class="text-decoration-none text-danger"
-				                                            href="#hero">Login</a>
+				                                            href="login">Login</a>
 				</p>
 			</form>
 		</section>
