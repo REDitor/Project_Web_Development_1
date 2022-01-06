@@ -28,27 +28,45 @@ if (isset($_POST['login'])) {
 	<link rel="shortcut icon" href="/app/public/img/favicon/favicon.svg" />
 	<title>Curtains | Home</title>
 	<style>
+		body {
+			background: url("/img/login/moviecurtains.jpg") no-repeat center/cover;
+		}
+
+		.overlay {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.6);
+		}
+
 		.loginContainer {
-			height: 100vh;
-			position: relative;
 			margin-top: 15rem;
 		}
 	</style>
 </head>
 
-<body class="bg-white text-dark">
-	<section class="loginContainer container w-25 text-center">
-		<section class="card p-5">
-			<form method="POST">
-				<h1>Login</h1>
-				<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"
-				       class="form-control mb-3">
-				<input type="password" name="passwordLogin" placeholder="Enter password" id="passwordLogin"
-				       class="form-control mb-3">
-				<button name="login" class="col-12 btn btn-danger btn-block">Login</button>
-			</form>
+<body>
+	<section class="overlay"></section>
+		<section class="loginContainer container w-25 text-center position-relative">
+			<section class="card bg-dark text-white px-5">
+				<form method="POST">
+					<h1 class="py-4">Login</h1>
+					<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"
+					       class="form-control mb-3">
+					<input type="password" name="passwordLogin" placeholder="Enter password" id="passwordLogin"
+					       class="form-control mb-3">
+					<button name="login" class="col-12 btn btn-danger btn-block">Login</button>
+					<p class="mt-4"><a class="text-decoration-none text-danger"
+					                   href="#">Forgot password?</a></p>
+					<p class="mt-4"><small>New to Curtains? <a class="text-decoration-none text-danger"
+					                                           href="home#registration">Create an account</a></small>
+					</p>
+				</form>
+			</section>
 		</section>
-	</section>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	        crossorigin="anonymous"></script>

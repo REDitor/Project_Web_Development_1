@@ -81,10 +81,12 @@ session_start();
 	<section id="page-container">
 		<section id="movie-container">
 			<section class="container">
-				<section class="contentMessage">
-					<h1>Shows</h1>
-					<p></p>
-				</section>
+				<ol class="breadcrumb pt-2">
+					<li class="breadcrumb-item">
+						<a class="text-decoration-none text-danger" href="home">Home</a>
+					</li>
+					<li class="breadcrumb-item active">Shows</li>
+				</ol>
 				<h2>Shows</h2>
 				<section class="row pb-5">
 					<?php
