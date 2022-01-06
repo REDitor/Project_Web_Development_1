@@ -4,9 +4,10 @@ session_start();
 require_once __DIR__ . '/../services/userservice.php';
 
 if (isset($_POST['login'])) {
-	if ($_POST['usernameLogin'] != "" && $_POST['passwordLogin'] != "") {
-		$username = $_POST['usernameLogin'];
-		$password = md5($_POST['passwordLogin']);
+	$username = $_POST['usernameLogin'];
+	$password = $_POST['passwordLogin'];
+	if ($username != "" && $password != "") {
+		$password = md5($password);
 
 		$user_service = new UserService();
 		$_SESSION['user'] = $user_service->getByUsernameAndPassword($username, $password);

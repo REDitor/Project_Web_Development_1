@@ -1,24 +1,15 @@
 <?php
 
-class User
+class User implements JsonSerializable
 {
     private int $userId;
     private string $username;
     private string $password;
     private string $email;
 
-    /**
-     * @param int $userId
-     * @param string $username
-     * @param string $password
-     * @param string $email
-     */
-    public function __construct(int $userId, string $username, string $password, string $email)
+    public function jsonSerialize()
     {
-        $this->userId = $userId;
-        $this->username = $username;
-        $this->password = $password;
-        $this->email = $email;
+        return get_object_vars($this);
     }
 
     /**
@@ -27,6 +18,14 @@ class User
     public function getUserId(): int
     {
         return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
     }
 
     /**
@@ -76,5 +75,4 @@ class User
     {
         $this->email = $email;
     }
-
 }

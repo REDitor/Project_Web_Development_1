@@ -14,31 +14,6 @@ body {
     border-bottom: #df4759 1px solid;
 }
 
-.hero {
-    background: url("/img/home/Cinema_Seats.png") no-repeat center/cover;
-    height: 100vh;
-    position: relative;
-    color: #fff;
-}
-
-.hero .content {
-    flex-direction: column;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero * {
-    z-index: 10;
-}
-
 #navbar {
     z-index: 9999;
 }

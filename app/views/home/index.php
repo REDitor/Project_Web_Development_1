@@ -1,37 +1,37 @@
 <?php
+require_once __DIR__ . '/../../services/userservice.php';
+require_once __DIR__ . '/../../models/user.php';
 session_start();
 
-require_once __DIR__ . '/../../services/userservice.php';
 
 //register user
 if (isset($_SESSION['user'])) {
 	$loggedUser = $_SESSION['user'];
-} else {
-	if (isset($_POST['register'])) {
-		if ($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['passConfirm'] != "") {
-			$email = $_POST['email'];
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			$passConfirm = $_POST['passConfirm'];
+} else if (isset($_POST['register'])) {
+	if ($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['passConfirm'] != "") {
+		$email = $_POST['email'];
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$passConfirm = $_POST['passConfirm'];
 
-			if ($password == $passConfirm) {
-				//encrypt password
-				$password = md5($password);
+		if ($password == $passConfirm) {
+			//encrypt password
+			$password = md5($password);
 
-				$user_service = new UserService();
-				$user_service->insertUser(new User(0, $username, $password, $email));
+			//TODO: constructor?
+			$user = new User();
+			$user->setUsername($username);
+			$user->setPassword($password);
+			$user->setEmail($email);
 
-				$_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
-			}
-		} else {
-			echo "<script>alert('Please fill in all the fields!')</script>
-              <script>window.location = 'home#registration'</script>";
+			$user_service = new UserService();
+			$user_service->insertUser($user);
 		}
+	} else {
+		echo "<script>alert('Please fill in all the fields!')</script>
+              <script>window.location = 'home#registration'</script>";
 	}
 }
-
-//login user
-
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +47,9 @@ if (isset($_SESSION['user'])) {
 	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
 	<title>Curtains | Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="home.css">
 </head>
 <!--FIXME: hide registration form if logged in + replace hero with welcome message-->
-<!--FIXME: userservice returns a bool, not a user-->
 <!--TODO: make favicon color danger-->
 <!--TODO: Header text center incl button-->
 
@@ -70,7 +70,7 @@ if (isset($_SESSION['user'])) {
 					</button>
 					<div class="collapse navbar-collapse m-auto" id="navBurger">
 						<ul class="navbar-nav m-auto">
-							<li class="nav-item"><a class="nav-link h6 active" href="">Home</a></li>
+							<li class="nav-item"><a class="nav-link h6 active" href="home">Home</a></li>
 							<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
 							<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
 							<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>
@@ -79,7 +79,7 @@ if (isset($_SESSION['user'])) {
 						</ul>
 						<ul class="navbar-nav">
 							<?php
-							if (!isset($_SESSION['user'])) {
+							if (!isset($loggedUser)) {
 								?>
 								<li class="nav-item">
 									<a class="btn btn-danger btn-sm" type="submit" href="login">Login</a>
@@ -92,10 +92,10 @@ if (isset($_SESSION['user'])) {
 									   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-user"></i>
 									</a>
-									<div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+									<div class="dropdown-menu dropdown-menu-left nav-user-dropdown"
 									     aria-labelledby="userDropdown">
 										<div class="nav-user-info">
-											<h5 class="mb-0 text-dark nav-user-name">U are logged in</h5>
+											<h5 class="mb-0 text-dark nav-user-name"><?php echo $loggedUser->getUsername(); ?></h5>
 										</div>
 										<a class="dropdown-item" href="#"><i class="fas fa-bars me-2"></i>My Lists</a>
 										<a class="dropdown-item" href="<?php $_SESSION = array();
@@ -110,15 +110,20 @@ if (isset($_SESSION['user'])) {
 						</ul>
 					</div>
 				</section>
-
 			</nav>
 		</section>
 
 		<section
 			class="content jumbotron jumbotron-fluid text-light d-flex justify-content-center align-items-center text-center h-100 pt-3 pb-3">
 			<?php
-			if (!isset($_SESSION['user'])) {
-				echo $_SESSION['user'];
+			if (isset($_POST['register'])) {
+				?>
+				<h1 class="display-4">Thank you for registering to Curtains</h1>
+				<p class="lead">Your Cinematic Journey Begins!
+				</p>
+				<a href="login" class="btn btn-danger"><i class="fas fa-chevron-right"></i> Login</a>
+				<?php
+			} else if (!isset($loggedUser)) {
 				?>
 				<h1 class="display-4">The Ultimate Climax</h1>
 				<p class="lead">Create your own watch lists and start your Cinematic Journey!
@@ -128,9 +133,10 @@ if (isset($_SESSION['user'])) {
 				<?php
 			} else {
 				?>
-				<h1 class="display-4">Welcome ...</h1>
-				<p class="lead">Create your own watch lists and start your Cinematic Journey!
+				<h1 class="display-4">Welcome <?php echo $loggedUser->getUsername(); ?>.</h1>
+				<p class="lead">We are very happy to present you with your very own space for managing your watch lists!
 				</p>
+				<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i> My Lists</a>
 				<?php
 			}
 			?>
@@ -138,7 +144,7 @@ if (isset($_SESSION['user'])) {
 	</header>
 
 	<?php
-	if (!isset($_SESSION['user'])) {
+	if (!isset($loggedUser) && !isset($_POST['register'])) {
 		?>
 		<section id="registration" class="container w-25 m-auto my-5 text-center">
 			<h1>Create an account</h1>

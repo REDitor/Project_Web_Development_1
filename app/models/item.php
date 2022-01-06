@@ -3,17 +3,54 @@
 class Item
 {
     private int $id;
-    private WatchList $movies;
     private string $title;
     private string $writer;
 
     /**
-     * @param int $id
-     * @param string $title
+     * @return int
      */
-    public function __construct(int $id, string $title)
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
         $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWriter(): string
+    {
+        return $this->writer;
+    }
+
+    /**
+     * @param string $writer
+     */
+    public function setWriter(string $writer): void
+    {
+        $this->writer = $writer;
     }
 }
