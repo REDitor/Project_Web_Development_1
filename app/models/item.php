@@ -1,25 +1,30 @@
 <?php
 
-class Item
+class Item implements JsonSerializable
 {
-    private int $id;
-    private string $title;
-    private string $writer;
+    protected int $itemId;
+    protected string $title;
+    protected string $writer;
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getItemId(): int
     {
-        return $this->id;
+        return $this->itemId;
     }
 
     /**
-     * @param int $id
+     * @param int $itemId
      */
-    public function setId(int $id): void
+    public function setItemId(int $itemId): void
     {
-        $this->id = $id;
+        $this->itemId = $itemId;
     }
 
     /**
@@ -53,4 +58,5 @@ class Item
     {
         $this->writer = $writer;
     }
+
 }

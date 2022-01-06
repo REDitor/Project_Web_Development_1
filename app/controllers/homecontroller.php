@@ -3,6 +3,6 @@ require __DIR__ . '/controller.php';
 
 class HomeController extends Controller {
     public function index() {
-        require __DIR__ . '/../views/home/index.php';
+        require __DIR__ . '/../views/index.php';
     }
 }

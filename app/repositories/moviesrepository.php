@@ -6,15 +6,14 @@ class MoviesRepository extends Repository
 {
     public function getAll() {
         try {
-
-
-            $stmt = $this->connection->prepare("SELECT items.title, items.writer, movies.durationInMinutes
+            $stmt = $this->connection->prepare("SELECT items.itemId, items.title, items.writer, movies.durationInMinutes
                                             FROM items
-                                            INNER JOIN movies ON items.itemId = movies.itemId;");
+                                            INNER JOIN movies ON items.itemId = movies.itemId
+                                            ORDER BY items.title;");
 
-            $result = $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Movie');
-            return $stmt->fetchAll();
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_CLASS, 'Movie');
+
         } catch (PDOException $pdoe) {
             echo $pdoe;
         }

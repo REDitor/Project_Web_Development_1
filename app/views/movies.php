@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="listings.css">
 </head>
-<!--FIXME: hide registration form if logged in + replace hero with welcome message-->
-<!--TODO: make favicon color danger-->
-<!--TODO: Header text center incl button-->
-
 
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
@@ -77,37 +77,59 @@
 			</nav>
 		</section>
 	</header>
-	
-	<section class="container">
-		<section id="movieListings">
-			<h2>Movies</h2>
-			<section class="row">
-				<?php
-				require_once __DIR__ . '/../services/movieservice.php';
-				$movie_service = new MovieService();
-				
-				foreach ($movie_service->getAll() as $movie) {
-					?>
-					<section class="col">
-						<img src="" alt="">
-					</section>
+
+	<section id="page-container">
+		<section id="movie-container">
+			<section class="container">
+				<section class="contentMessage">
+					<h1>Movies</h1>
+					<p></p>
+				</section>
+				<h2>Movies</h2>
+				<section class="row pb-5">
 					<?php
-				}
-				?>
+					require_once __DIR__ . '/../services/movieservice.php';
+					$movie_service = new MovieService();
+
+					foreach ($movie_service->getAll() as $movie) {
+						require_once __DIR__ . '/scripts/getimagename.php';
+						?>
+						<section class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 px-2 py-3">
+							<section class="card product-card h-100">
+								<img src=" <?php echo '/img/movies/' . getImageName($movie) . '.jpg' ?>"
+								     alt="<?php getImageName($movie); ?>"
+								     title="<?php $movie->getTitle(); ?>>"
+								     class="card-img-top w-100">
+
+								<section class="card-footer px-2">
+									<p class="card-title"><?php echo $movie->getTitle(); ?></p>
+									<section class="float-start">
+										<p class="card-text"><small>By: <?php echo $movie->getWriter(); ?><br>
+												Duration: <?php echo $movie->getDurationInMinutes(); ?> minutes</small>
+										</p>
+									</section>
+									<button name="addToList" class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark"></button>
+								</section>
+							</section>
+						</section>
+						<?php
+					}
+					?>
+				</section>
 			</section>
 		</section>
+		<footer class="footer bg-dark position-absolute bottom-0 w-100">
+			<section class="social">
+				<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+				<a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+				<a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+				<a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+			</section>
+			<p class="text-light d-inline">Copyright &copy; 2021 - Curtains</p>
+		</footer>
 	</section>
 	
-	<footer class="footer bg-dark bottom-0">
-		<section class="social">
-			<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-			<a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-			<a href="#"><i class="fab fa-youtube fa-2x"></i></a>
-			<a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-		</section>
-		<p class="text-light d-inline">Copyright &copy; 2021 - Curtains</p>
-	</footer>
-	
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	        crossorigin="anonymous"></script>

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../../services/userservice.php';
-require_once __DIR__ . '/../../models/user.php';
+require_once __DIR__ . '/../services/userservice.php';
+require_once __DIR__ . '/../models/user.php';
 session_start();
 
 
@@ -56,7 +56,7 @@ if (isset($_SESSION['user'])) {
 
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
-		<section id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+		<section id="navbar" class="navbar navbar-expand-xs navbar-expand-sm navbar-dark bg-dark fixed-top">
 			<a href="" class="text-decoration-none d-inline-block">
 				<h1 class="logo ms-4 mt-2">
 					<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span
