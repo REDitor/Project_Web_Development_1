@@ -13,7 +13,7 @@ session_start();
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
-	<title>Curtains | Home</title>
+	<title>Curtains | Shows</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="listings.css">
 </head>
