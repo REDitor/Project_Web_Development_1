@@ -29,7 +29,8 @@ if (isset($_POST['login'])) {
 	<title>Curtains | Login</title>
 	<style>
 		body {
-			background: url("/img/login/moviecurtains.jpg") no-repeat center/cover;
+			background: url("/img/login/moviecurtains.jpg") no-repeat;
+            background-size: 100vw 100vh;
 		}
 
 		.overlay {

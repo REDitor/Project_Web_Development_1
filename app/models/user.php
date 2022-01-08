@@ -1,5 +1,4 @@
 <?php
-
 class User implements JsonSerializable
 {
     private int $userId;

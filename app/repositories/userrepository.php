@@ -8,8 +8,8 @@ class UserRepository extends Repository
     {
         try {
 
-            $stmt = $this->connection->prepare("SELECT userId, username, password, email 
-                                                FROM users 
+            $stmt = $this->connection->prepare("SELECT userId, username, password, email
+                                                FROM users
                                                 WHERE username=:username
                                                 AND password=:password");
             $stmt->bindParam(':username', $username);
