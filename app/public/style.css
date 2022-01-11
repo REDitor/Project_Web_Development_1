@@ -10,17 +10,24 @@ body {
     font-weight: 400;
 }
 
-.navbar ul a:hover {
-    border-bottom: #df4759 1px solid;
-}
-
 #navbar {
     z-index: 9999;
 }
 
+@media only screen and (max-width: 480px) {
+    .navbar ul a:hover {
+        position: relative;
+    }
+}
+
 @media only screen and (min-width: 480px) and (max-width: 2600px) {
+    .navbar ul .nav-link:hover {
+        border-bottom: #df4759 1px solid;
+        margin-bottom: -1px;
+    }
+
     nav {
-        position: absolute;
         width: 100%;
+        position: absolute;
     }
 }
