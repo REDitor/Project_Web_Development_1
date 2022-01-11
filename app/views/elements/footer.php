@@ -1,4 +1,4 @@
-<footer class="footer bg-dark position-absolute bottom-0 w-100">
+<footer class="footer bg-dark bottom-0 w-100">
 	<section class="social">
 		<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
 		<a href="#"><i class="fab fa-twitter fa-2x"></i></a>

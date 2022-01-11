@@ -55,6 +55,7 @@ error_reporting(E_ALL);
 <!--TODO: make favicon color danger-->
 <!--FIXME: sessions not working-->
 <!--FIXME: find solution for active nav-->
+<!--FIXME: make forms responsive (bootstrap)-->
 
 
 
@@ -116,15 +117,9 @@ error_reporting(E_ALL);
 	}
 	?>
 
-	<footer class="footer bg-dark bottom-0">
-		<section class="social">
-			<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-			<a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-			<a href="#"><i class="fab fa-youtube fa-2x"></i></a>
-			<a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-		</section>
-		<p class="text-light d-inline">Copyright &copy; 2021 - Curtains</p>
-	</footer>
+	<?php
+	include __DIR__ . '/elements/footer.php';
+	?>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
