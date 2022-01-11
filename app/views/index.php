@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';
+
 session_start();
 
 //register user
@@ -52,8 +53,9 @@ error_reporting(E_ALL);
 	<link rel="stylesheet" type="text/css" href="home.css">
 </head>
 <!--TODO: make favicon color danger-->
-<!--TODO: Header text center incl button-->
-<!--TODO: nav items moving on hover-->
+<!--FIXME: sessions not working-->
+<!--FIXME: find solution for active nav-->
+
 
 
 <body class="bg-white text-dark">
