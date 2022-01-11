@@ -1,7 +1,7 @@
 <?php
-session_start();
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';
+session_start();
 
 //register user
 if (isset($_SESSION['user'])) {
