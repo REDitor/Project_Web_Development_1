@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['user'])) {
+	$loggedUser = unserialize($_SESSION['user']);
+}
+?>
+
 <section id="navbar" class="navbar navbar-expand-xs navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<a href="" class="text-decoration-none d-inline-block">
 		<h1 class="logo ms-4 mt-2">

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class PatternRouter
 {
     private function stripParams($uri)

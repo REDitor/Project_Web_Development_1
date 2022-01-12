@@ -2,11 +2,9 @@
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';
 
-session_start();
-
 //register user
 if (isset($_SESSION['user'])) {
-	$loggedUser = $_SESSION['user'];
+	$loggedUser = unserialize($_SESSION['user']);
 } else if (isset($_POST['register'])) {
 	if ($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['passConfirm'] != "") {
 		$email = $_POST['email'];

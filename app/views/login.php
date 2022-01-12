@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once __DIR__ . '/../services/userservice.php';
 
@@ -10,7 +9,7 @@ if (isset($_POST['login'])) {
 		$password = md5($password);
 
 		$user_service = new UserService();
-		$_SESSION['user'] = $user_service->getByUsernameAndPassword($username, $password);
+		$_SESSION['user'] = serialize($user_service->getByUsernameAndPassword($username, $password));
 		header('location: home');
 	}
 }
