@@ -45,7 +45,7 @@ if (isset($_SESSION['user'])) {
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-dark nav-user-name"><?php echo $loggedUser->getUsername(); ?></h5>
 								</div>
-								<a class="dropdown-item" href="lists"><i class="fas fa-bars me-2"></i>My Lists</a>
+								<a class="dropdown-item" href="mylists"><i class="fas fa-bars me-2"></i>My Lists</a>
 								<a class="dropdown-item" href="<?php $_SESSION = array();
 								session_destroy(); ?>">
 									<i class="fas fa-power-off me-2"></i>Logout

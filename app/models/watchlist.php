@@ -1,38 +1,31 @@
 <?php
-class WatchList
+class WatchList implements JsonSerializable
 {
-    private int $id;
+    private int $watchListId;
     private string $name;
     private string $description;
     private $movies;
     private $shows;
 
-    /**
-     * @param int $id
-     * @param string $name
-     * @param string $description
-     */
-    public function __construct(int $id, string $name, string $description)
+    public function jsonSerialize()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
+        return get_object_vars($this);
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getWatchListId(): int
     {
-        return $this->id;
+        return $this->watchListId;
     }
 
     /**
-     * @param int $id
+     * @param int $watchListId
      */
-    public function setId(int $id): void
+    public function setWatchListId(int $watchListId): void
     {
-        $this->id = $id;
+        $this->watchListId = $watchListId;
     }
 
     /**

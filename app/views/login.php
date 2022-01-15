@@ -25,27 +25,8 @@ if (isset($_POST['login'])) {
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="/app/public/img/favicon/favicon.svg" />
+	<link rel="stylesheet" type="text/css" href="login.css">
 	<title>Curtains | Login</title>
-	<style>
-		body {
-			background: url("/img/login/moviecurtains.jpg") no-repeat;
-            background-size: 100vw 100vh;
-		}
-
-		.overlay {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0, 0, 0, 0.6);
-		}
-
-		.loginContainer {
-			margin-top: 15rem;
-		}
-	</style>
 </head>
 
 <body>

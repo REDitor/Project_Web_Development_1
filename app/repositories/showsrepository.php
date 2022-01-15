@@ -13,7 +13,6 @@ class ShowsRepository extends Repository
 
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_CLASS, 'Show');
-
         } catch (PDOException $pdoe) {
             echo $pdoe;
         }

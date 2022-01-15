@@ -56,7 +56,6 @@ error_reporting(E_ALL);
 <!--FIXME: make forms responsive (bootstrap)-->
 
 
-
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
 		<?php
@@ -84,7 +83,8 @@ error_reporting(E_ALL);
 			} else {
 				?>
 				<h1 class="display-4">Welcome <?php echo $loggedUser->getUsername(); ?>.</h1>
-				<p class="lead">We are very happy to present you with your very own space for managing your watch lists!
+				<p class="lead">We are very happy to present you with your very own space for managing your watch
+					lists!
 				</p>
 				<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i> My Lists</a>
 				<?php
@@ -92,32 +92,32 @@ error_reporting(E_ALL);
 			?>
 		</section>
 	</header>
-
-	<?php
-	if (!isset($loggedUser) && !isset($_POST['register'])) {
-		?>
-		<section id="registration" class="container w-25 m-auto my-5 text-center">
-			<h1>Create an account</h1>
-			<form method="POST" class="mt-4">
-				<input type="email" name="email" placeholder="Enter email" id="email" class="form-control mb-3">
-				<input type="text" name="username" placeholder="Enter username" id="username" class="form-control mb-3">
-				<input type="password" name="password" placeholder="Enter password" id="password"
-				       class="form-control mb-3">
-				<input type="password" name="passConfirm" placeholder="Confirm password" id="passConfirm"
-				       class="form-control mb-3">
-				<button name="register" class="col-12 btn btn-danger btn-block">Register</button>
-				<p class="mt-4">Already have an account? <a class="text-decoration-none text-danger"
-				                                            href="login">Login</a>
-				</p>
-			</form>
-		</section>
 		<?php
-	}
-	?>
+		if (!isset($loggedUser) && !isset($_POST['register'])) {
+			?>
+			<section id="registration" class="container w-25 m-auto my-5 text-center">
+				<h1>Create an account</h1>
+				<form method="POST" class="mt-4">
+					<input type="email" name="email" placeholder="Enter email" id="email" class="form-control mb-3">
+					<input type="text" name="username" placeholder="Enter username" id="username"
+					       class="form-control mb-3">
+					<input type="password" name="password" placeholder="Enter password" id="password"
+					       class="form-control mb-3">
+					<input type="password" name="passConfirm" placeholder="Confirm password" id="passConfirm"
+					       class="form-control mb-3">
+					<button name="register" class="col-12 btn btn-danger btn-block">Register</button>
+					<p class="mt-4">Already have an account? <a class="text-decoration-none text-danger"
+					                                            href="login">Login</a>
+					</p>
+				</form>
+			</section>
+			<?php
+		}
+		?>
 
-	<?php
-	include __DIR__ . '/elements/footer.php';
-	?>
+		<?php
+		include __DIR__ . '/elements/footer.php';
+		?>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

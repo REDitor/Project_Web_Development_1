@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +13,10 @@
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
-	<title>Curtains | Movies</title>
+	<title>Curtains | My Lists</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="listings.css">
+	<link rel="stylesheet" type="text/css" href="mylists.css">
 </head>
 
 <body class="bg-white text-dark">
@@ -28,39 +33,39 @@
 					<li class="breadcrumb-item">
 						<a class="text-decoration-none text-danger" href="home">Home</a>
 					</li>
-					<li class="breadcrumb-item active">Movies</li>
+					<li class="breadcrumb-item active">My Lists</li>
 				</ol>
-				<h2>Movies</h2>
-				<section class="row pb-5">
-					<?php
-					require_once __DIR__ . '/../services/movieservice.php';
-					$movie_service = new MovieService();
+				<h2>My Lists</h2>
+				<section class="pb-5">
+					<table class="table">
+						<thead class="table-dark">
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							require_once __DIR__ . '/../services/watchlistservice.php';
+							$watchList_Service = new WatchListService();
 
-					foreach ($movie_service->getAll() as $movie) {
-						require_once __DIR__ . '/scripts/getimagename.php';
-						?>
-						<section class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 px-2 py-3">
-							<section class="card product-card h-100">
-								<img src=" <?php echo '/img/movies/' . getImageName($movie) . '.jpg' ?>"
-								     alt="<?php getImageName($movie); ?>"
-								     title="<?php $movie->getTitle(); ?>>"
-								     class="card-img-top w-100">
-
-								<section class="card-footer px-2">
-									<p class="card-title"><?php echo $movie->getTitle(); ?></p>
-									<section class="float-start">
-										<p class="card-text"><small>By: <?php echo $movie->getWriter(); ?><br>
-												Duration: <?php echo $movie->getDurationInMinutes(); ?> minutes</small>
-										</p>
-									</section>
-									<button name="addToList"
-									        class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark"></button>
-								</section>
-							</section>
-						</section>
-						<?php
-					}
-					?>
+							foreach ($watchList_Service->getAll() as $watchList) {
+								?>
+								<tr>
+									<form method="GET">
+										<th scope="row"><?php echo $watchList->getName(); ?></th>
+										<td><?php echo $watchList->getDescription(); ?></td>
+										<td align="right">
+											<button data-id="<?php $watchList->getWatchListId(); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
+										</td>
+									</form>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
 				</section>
 			</section>
 		</section>
@@ -68,7 +73,7 @@
 		include __DIR__ . '/elements/footer.php';
 		?>
 	</section>
-	
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
