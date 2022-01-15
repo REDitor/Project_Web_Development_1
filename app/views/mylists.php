@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +16,16 @@
 </head>
 
 <body class="bg-white text-dark">
+
+
+	<?php
+	//temporary all lists
+	require_once __DIR__ . '/../services/watchlistservice.php';
+	$watchListsService = new WatchListService();
+	$watchLists = $watchListsService->getAll();
+	var_dump($watchLists);
+	?>
+
 	<header id="hero" class="hero">
 		<?php
 		include __DIR__ . '/elements/navbar.php';
@@ -37,7 +43,7 @@
 				</ol>
 				<h2>My Lists</h2>
 				<section class="pb-5">
-					<table class="table">
+					<table class="table table-hover">
 						<thead class="table-dark">
 							<tr>
 								<th>Name</th>
@@ -45,26 +51,7 @@
 								<th></th>
 							</tr>
 						</thead>
-						<tbody>
-							<?php
-							require_once __DIR__ . '/../services/watchlistservice.php';
-							$watchList_Service = new WatchListService();
-
-							foreach ($watchList_Service->getAll() as $watchList) {
-								?>
-								<tr>
-									<form method="GET">
-										<th scope="row"><?php echo $watchList->getName(); ?></th>
-										<td><?php echo $watchList->getDescription(); ?></td>
-										<td align="right">
-											<button data-id="<?php $watchList->getWatchListId(); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
-										</td>
-									</form>
-								</tr>
-								<?php
-							}
-							?>
-						</tbody>
+						<tbody id="watchListsTable"></tbody>
 					</table>
 				</section>
 			</section>
