@@ -3,8 +3,6 @@ namespace repositories;
 
 use PDOException;
 
-require __DIR__ . '/repository.php';
-
 class UserRepository extends Repository
 {
     function getIdByUsernameAndPassword($username, $password) {

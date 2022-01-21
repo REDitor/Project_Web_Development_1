@@ -1,6 +1,5 @@
 <?php
-use controllers\AboutController;
-use controllers\ShowsController;
+
 
 class PatternRouter
 {

@@ -13,7 +13,7 @@ class WatchListRepository extends Repository
                                                 WHERE userId = :userId");
 
             $stmt->bindParam(':userId', $userId);
-            return $stmt->fetchAll(PDO::FETCH_CLASS, 'WatchList');
+            return $stmt->fetchAll(PDO::FETCH_CLASS, 'models\WatchList');
         } catch (PDOException $pdoe) {
             echo $pdoe;
         }

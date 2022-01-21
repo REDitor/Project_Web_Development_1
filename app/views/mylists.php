@@ -25,7 +25,7 @@ use services\WatchListService;
 	<?php
 	//temporary all lists
 	$watchListsService = new WatchListService();
-	$watchLists = $watchListsService->getAll();
+	$watchLists = $watchListsService->getListsByUserId($_SESSION['userId']);
 	?>
 
 	<header id="hero" class="hero">
