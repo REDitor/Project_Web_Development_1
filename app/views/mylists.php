@@ -23,7 +23,6 @@
 	require_once __DIR__ . '/../services/watchlistservice.php';
 	$watchListsService = new WatchListService();
 	$watchLists = $watchListsService->getAll();
-//	var_dump($watchLists);
 	?>
 
 	<header id="hero" class="hero">

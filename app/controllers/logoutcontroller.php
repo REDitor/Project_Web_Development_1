@@ -5,6 +5,6 @@ class LogoutController extends Controller
 {
     public function index() {
         session_destroy();
-        require __DIR__ . '/../views/index.php';
+        header('location: home');
     }
 }

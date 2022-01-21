@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../repositories/watchlistrepository.php';
+require_once __DIR__ . '/../repositories/watchlistrepository.php';
 
 class WatchListService
 {

@@ -6,7 +6,7 @@ class Repository
 
     function __construct()
     {
-        require __DIR__ . '/../database.php';
+        require_once __DIR__ . '/../database.php';
         $this->connection = Database::getInstance();
     }
 }

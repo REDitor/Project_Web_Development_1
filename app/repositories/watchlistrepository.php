@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/watchlist.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/watchlist.php';
 
 class WatchListRepository extends Repository
 {

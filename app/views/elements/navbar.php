@@ -39,7 +39,7 @@ if (isset($_SESSION['userId'])) {
 							   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-user"></i>
 							</a>
-							<div class="dropdown-menu dropdown-menu-left nav-user-dropdown"
+							<div class="dropdown-menu dropdown-menu-start"
 							     aria-labelledby="userDropdown">
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-dark nav-user-name">

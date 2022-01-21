@@ -1,3 +1,13 @@
+<?php
+if (isset($_POST['addToList'])) {
+	if (!isset($_SESSION['userId'])) {
+		header('location: login');
+	} else {
+
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +64,8 @@
 										</p>
 									</section>
 									<button name="addToList"
-									        class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark"></button>
+									        class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark">
+									</button>
 								</section>
 							</section>
 						</section>
