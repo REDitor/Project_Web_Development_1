@@ -92,32 +92,42 @@ error_reporting(E_ALL);
 			?>
 		</section>
 	</header>
-		<?php
-		if (!isset($loggedUser) && !isset($_POST['register'])) {
-			?>
-			<section id="registration" class="container w-25 m-auto my-5 text-center">
-				<h1>Create an account</h1>
-				<form method="POST" class="mt-4">
+	<?php
+	if (!isset($loggedUser) && !isset($_POST['register'])) {
+		?>
+		<section id="registration" class="container col-sm-11 col-md-7 col-lg-5 col-xl-3 m-auto my-5 text-center">
+			<h1>Create an account</h1>
+			<form method="POST" class="mt-4">
+				<section class="form-group">
 					<input type="email" name="email" placeholder="Enter email" id="email" class="form-control mb-3">
+				</section>
+				<section class="form-group">
 					<input type="text" name="username" placeholder="Enter username" id="username"
 					       class="form-control mb-3">
+				</section>
+				<section class="form-group">
 					<input type="password" name="password" placeholder="Enter password" id="password"
 					       class="form-control mb-3">
+				</section>
+				<section class="form-group">
 					<input type="password" name="passConfirm" placeholder="Confirm password" id="passConfirm"
 					       class="form-control mb-3">
+				</section>
+				<section class="form-group">
 					<button name="register" class="col-12 btn btn-danger btn-block">Register</button>
 					<p class="mt-4">Already have an account? <a class="text-decoration-none text-danger"
 					                                            href="login">Login</a>
 					</p>
-				</form>
-			</section>
-			<?php
-		}
-		?>
-
+				</section>
+			</form>
+		</section>
 		<?php
-		include __DIR__ . '/elements/footer.php';
-		?>
+	}
+	?>
+
+	<?php
+	include __DIR__ . '/elements/footer.php';
+	?>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

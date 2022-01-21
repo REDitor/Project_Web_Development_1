@@ -27,7 +27,7 @@ if (isset($_SESSION['user'])) {
 				</ul>
 				<ul class="navbar-nav">
 					<?php
-					if (!isset($loggedUser)) {
+					if (!isset($_SESSION['user'])) {
 						?>
 						<li class="nav-item">
 							<a class="btn btn-danger btn-sm" type="submit" href="login">Login</a>

@@ -4,8 +4,8 @@ class WatchList implements JsonSerializable
     private int $watchListId;
     private string $name;
     private string $description;
-    private $movies;
-    private $shows;
+//    private $movies;
+//    private $shows;
 
     public function jsonSerialize()
     {

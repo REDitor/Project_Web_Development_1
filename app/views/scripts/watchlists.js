@@ -27,11 +27,12 @@ function displayWatchlists(watchlists) {
 function getWatchLists(/*userId*/) {
     const watchListsTable = document.getElementById('watchListsTable');
     watchListsTable.innerHTML = '';
-    fetch('/mylists')
+    fetch('localhost/mylists')
         .then(result => result.json())
         .then((out) => {
             displayWatchlists(out);
         })
+        .catch((err) => console.error(err));
 }
 
 function deleteWatchList(watchListId) {
