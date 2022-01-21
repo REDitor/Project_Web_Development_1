@@ -1,3 +1,7 @@
+<?php
+use services\WatchListService;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +24,6 @@
 
 	<?php
 	//temporary all lists
-	require_once __DIR__ . '/../services/watchlistservice.php';
 	$watchListsService = new WatchListService();
 	$watchLists = $watchListsService->getAll();
 	?>

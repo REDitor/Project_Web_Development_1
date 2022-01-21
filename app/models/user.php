@@ -1,4 +1,8 @@
 <?php
+namespace models;
+
+use JsonSerializable;
+
 class User implements JsonSerializable
 {
     private int $userId;

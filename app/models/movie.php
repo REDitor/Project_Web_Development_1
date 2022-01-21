@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/item.php';
+namespace models;
 
 class Movie extends Item
 {

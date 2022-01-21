@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/../repositories/showsrepository.php';
+namespace services;
+
+use repositories\ShowsRepository;
 
 class ShowsService
 {

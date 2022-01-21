@@ -21,6 +21,9 @@
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
 		<?php
+
+		use services\ShowsService;
+
 		include __DIR__ . '/elements/navbar.php';
 		?>
 	</header>
@@ -37,7 +40,6 @@
 				<h2>Shows</h2>
 				<section class="row pb-5">
 					<?php
-					require_once __DIR__ . '/../services/showsservice.php';
 					$show_service = new ShowsService();
 
 					foreach ($show_service->getAll() as $show) {

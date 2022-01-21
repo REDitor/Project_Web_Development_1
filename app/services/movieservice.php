@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/../repositories/moviesrepository.php';
+namespace services;
+
+use repositories\MoviesRepository;
 
 class MovieService
 {

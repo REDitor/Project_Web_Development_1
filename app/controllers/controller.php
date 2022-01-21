@@ -1,4 +1,6 @@
 <?php
+namespace controllers;
+
 class Controller {
     function displayView($model) {
         $directory = substr(get_class($this), 0, -10);

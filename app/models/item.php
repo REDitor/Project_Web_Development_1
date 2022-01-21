@@ -1,4 +1,7 @@
 <?php
+namespace models;
+
+use JsonSerializable;
 
 class Item implements JsonSerializable
 {

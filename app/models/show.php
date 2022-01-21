@@ -1,6 +1,5 @@
 <?php
-
-require __DIR__ . '/item.php';
+namespace models;
 
 class Show extends Item
 {

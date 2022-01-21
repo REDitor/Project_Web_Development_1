@@ -1,4 +1,7 @@
 <?php
+
+use services\MovieService;
+
 if (isset($_POST['addToList'])) {
 	if (!isset($_SESSION['userId'])) {
 		header('location: login');
@@ -43,7 +46,6 @@ if (isset($_POST['addToList'])) {
 				<h2>Movies</h2>
 				<section class="row pb-5">
 					<?php
-					require_once __DIR__ . '/../services/movieservice.php';
 					$movie_service = new MovieService();
 
 					foreach ($movie_service->getAll() as $movie) {

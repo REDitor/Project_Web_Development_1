@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/repository.php';
-require_once __DIR__ . '/../models/show.php';
+namespace repositories;
+
+use PDO;
+use PDOException;
 
 class ShowsRepository extends Repository
 {
@@ -12,7 +14,7 @@ class ShowsRepository extends Repository
                                             ORDER BY items.title;");
 
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_CLASS, 'Show');
+            return $stmt->fetchAll(PDO::FETCH_CLASS, 'models\Show');
         } catch (PDOException $pdoe) {
             echo $pdoe;
         }

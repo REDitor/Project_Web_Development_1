@@ -1,5 +1,6 @@
 <?php
-require __DIR__ . '/controller.php';
+use controllers\Controller;
+include 'autoload.php';
 
 class MoviesController extends Controller {
     public function index() {

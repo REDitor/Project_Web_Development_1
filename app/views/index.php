@@ -1,4 +1,8 @@
 <?php
+
+use models\User;
+use services\UserService;
+
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';
 
@@ -90,7 +94,7 @@ if (isset($_SESSION['userId'])) {
 				<p class="lead">We are very happy to present you with your very own space for managing your watch
 					lists!
 				</p>
-				<a href="#" class="btn btn-danger"><i class="fas fa-chevron-right"></i> My Lists</a>
+				<a href="mylists" class="btn btn-danger"><i class="fas fa-chevron-right"></i> My Lists</a>
 				<?php
 			}
 			?>

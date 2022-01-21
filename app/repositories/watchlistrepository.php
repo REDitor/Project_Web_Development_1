@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/repository.php';
-require_once __DIR__ . '/../models/watchlist.php';
+namespace repositories;
+
+use PDO;
+use PDOException;
 
 class WatchListRepository extends Repository
 {
@@ -32,7 +34,7 @@ class WatchListRepository extends Repository
                                             FROM watchlists");
 
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_CLASS, 'WatchList');
+            return $stmt->fetchAll(PDO::FETCH_CLASS, 'models\WatchList');
         } catch (PDOException $pdeo) {
             echo $pdeo;
         }

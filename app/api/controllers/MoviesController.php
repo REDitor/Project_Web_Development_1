@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . '/../../services/movieservice.php';
+namespace api\controllers;
+
+use app\services\MovieService;
 
 class MoviesController {
     private MovieService $movie_Service;

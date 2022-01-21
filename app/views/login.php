@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../services/userservice.php';
+
+use services\UserService;
 
 if (isset($_POST['login'])) {
 	$username = $_POST['usernameLogin'];

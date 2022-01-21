@@ -1,6 +1,7 @@
 <?php
 //header("Access-Control-Allow-Origin: *");
 //header("Access-Control-Allow-Headers: *");
+
 session_start();
 require __DIR__ . '/../patternrouter.php';
 

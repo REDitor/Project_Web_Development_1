@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/../repositories/watchlistrepository.php';
+namespace services;
+
+use repositories\WatchListRepository;
 
 class WatchListService
 {

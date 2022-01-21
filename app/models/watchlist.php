@@ -1,4 +1,8 @@
 <?php
+namespace models;
+
+use JsonSerializable;
+
 class WatchList implements JsonSerializable
 {
     private int $watchListId;

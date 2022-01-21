@@ -1,4 +1,7 @@
 <?php
+namespace repositories;
+
+use Database;
 
 class Repository
 {

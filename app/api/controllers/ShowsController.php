@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . '/../../services/showsservice.php';
+namespace api\controllers;
+
+use app\services\ShowsService;
 
 class ShowsController
 {
