@@ -3,8 +3,8 @@ require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';
 
 //register user
-if (isset($_SESSION['user'])) {
-	$loggedUser = unserialize($_SESSION['user']);
+if (isset($_SESSION['userId'])) {
+	$userId = $_SESSION['userId'];
 } else if (isset($_POST['register'])) {
 	if ($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['passConfirm'] != "") {
 		$email = $_POST['email'];
@@ -30,9 +30,9 @@ if (isset($_SESSION['user'])) {
               <script>window.location = 'home#registration'</script>";
 	}
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ error_reporting(E_ALL);
 				</p>
 				<a href="login" class="btn btn-danger"><i class="fas fa-chevron-right"></i> Login</a>
 				<?php
-			} else if (!isset($loggedUser)) {
+			} else if (!isset($userId)) {
 				?>
 				<h1 class="display-4">The Ultimate Climax</h1>
 				<p class="lead">Create your own watch lists and start your Cinematic Journey!
@@ -82,7 +82,11 @@ error_reporting(E_ALL);
 				<?php
 			} else {
 				?>
-				<h1 class="display-4">Welcome <?php echo $loggedUser->getUsername(); ?>.</h1>
+				<h1 class="display-4">Welcome
+					<?php
+					echo $user_service->getUsernameById($userId)
+					?>.
+				</h1>
 				<p class="lead">We are very happy to present you with your very own space for managing your watch
 					lists!
 				</p>
@@ -93,9 +97,9 @@ error_reporting(E_ALL);
 		</section>
 	</header>
 	<?php
-	if (!isset($loggedUser) && !isset($_POST['register'])) {
+	if (!isset($userId) && !isset($_POST['register'])) {
 		?>
-		<section id="registration" class="container col-sm-11 col-md-7 col-lg-5 col-xl-3 m-auto my-5 text-center">
+		<section id="registration" class="container col-sm-11 col-md-6 col-lg-4 col-xl-3 m-auto my-5 text-center">
 			<h1>Create an account</h1>
 			<form method="POST" class="mt-4">
 				<section class="form-group">

@@ -1,6 +1,6 @@
 <?php
-if (isset($_SESSION['user'])) {
-	$loggedUser = unserialize($_SESSION['user']);
+if (isset($_SESSION['userId'])) {
+	$userId = $_SESSION['userId'];
 }
 ?>
 
@@ -23,11 +23,10 @@ if (isset($_SESSION['user'])) {
 					<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>
-
 				</ul>
 				<ul class="navbar-nav">
 					<?php
-					if (!isset($_SESSION['user'])) {
+					if (!isset($userId)) {
 						?>
 						<li class="nav-item">
 							<a class="btn btn-danger btn-sm" type="submit" href="login">Login</a>
@@ -43,11 +42,16 @@ if (isset($_SESSION['user'])) {
 							<div class="dropdown-menu dropdown-menu-left nav-user-dropdown"
 							     aria-labelledby="userDropdown">
 								<div class="nav-user-info">
-									<h5 class="mb-0 text-dark nav-user-name"><?php echo $loggedUser->getUsername(); ?></h5>
+									<h5 class="mb-0 text-dark nav-user-name">
+										<?php
+										require_once __DIR__ . '/../../services/userservice.php';
+										$user_service = new UserService();
+										echo $user_service->getUsernameById($userId);
+										?>
+									</h5>
 								</div>
 								<a class="dropdown-item" href="mylists"><i class="fas fa-bars me-2"></i>My Lists</a>
-								<a class="dropdown-item" href="<?php $_SESSION = array();
-								session_destroy(); ?>">
+								<a class="dropdown-item" href="logout">
 									<i class="fas fa-power-off me-2"></i>Logout
 								</a>
 							</div>

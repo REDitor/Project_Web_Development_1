@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../services/userservice.php';
 
 if (isset($_POST['login'])) {
@@ -9,7 +8,7 @@ if (isset($_POST['login'])) {
 		$password = md5($password);
 
 		$user_service = new UserService();
-		$_SESSION['user'] = serialize($user_service->getByUsernameAndPassword($username, $password));
+		$_SESSION['userId'] = $user_service->getIdByUsernameAndPassword($username, $password);
 		header('location: home');
 	}
 }
@@ -31,8 +30,8 @@ if (isset($_POST['login'])) {
 
 <body>
 	<section class="overlay"></section>
-		<section class="loginContainer container w-25 text-center position-relative">
-			<section class="card bg-dark text-white px-5">
+		<section class="container text-center d-flex align-items-center justify-content-center">
+			<section class="card bg-dark text-white px-5 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
 				<form method="POST">
 					<h1 class="py-4">Login</h1>
 					<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"

@@ -4,11 +4,10 @@ require __DIR__ . '/../models/user.php';
 
 class UserRepository extends Repository
 {
-    function getByUsernameAndPassword($username, $password)
-    {
+    function getIdByUsernameAndPassword($username, $password) {
         try {
 
-            $stmt = $this->connection->prepare("SELECT userId, username, password, email
+            $stmt = $this->connection->prepare("SELECT userId
                                                 FROM users
                                                 WHERE username=:username
                                                 AND password=:password");
@@ -16,25 +15,28 @@ class UserRepository extends Repository
             $stmt->bindParam(':password', $password);
             $stmt->execute();
 
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($stmt->rowCount() == 1 && !empty($row)) {
-                $user = new User();
-                $user->setUserId($row['userId']);
-                $user->setUsername($row['username']);
-                $user->setPassword($row['password']);
-                $user->setEmail($row['email']);
-
-                return $user;
-            }
+            return $stmt->fetchColumn();
 
         } catch (PDOException $pdeo) {
             echo $pdeo;
         }
     }
 
-    function insertUser($user)
-    {
+    function getUsernameById($userId) {
+        try {
+            $stmt = $this->connection->prepare("SELECT username
+                                                FROM users
+                                                WHERE userId = :userId");
+            $stmt->bindParam(':userId', $userId);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
+
+    function insertUser($user) {
         try {
             $stmt = $this->connection->prepare("INSERT INTO users (username, password, email)
                                                 VALUES (?,?,?)");
