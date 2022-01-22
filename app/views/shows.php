@@ -1,7 +1,7 @@
 <?php
 
-use app\services\ShowsService;
-use app\services\WatchListService;
+use services\ShowsService;
+use services\WatchListService;
 ?>
 
 <!DOCTYPE html>

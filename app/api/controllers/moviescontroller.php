@@ -1,7 +1,7 @@
 <?php
-namespace app\api\controllers;
+namespace api\controllers;
 
-use app\services\MovieService;
+use services\MovieService;
 
 class MoviesController {
     private MovieService $movie_Service;

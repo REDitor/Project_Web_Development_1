@@ -1,7 +1,7 @@
 <?php
-namespace app\services;
+namespace services;
 
-use app\repositories\UserRepository;
+use repositories\UserRepository;
 
 class UserService
 {

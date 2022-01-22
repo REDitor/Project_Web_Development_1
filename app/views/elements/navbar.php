@@ -1,6 +1,6 @@
 <?php
 
-use app\services\UserService;
+use services\UserService;
 
 if (isset($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];

@@ -1,8 +1,8 @@
 <?php
 
 
-use app\services\MovieService;
-use app\services\WatchListService;
+use services\MovieService;
+use services\WatchListService;
 
 if (isset($_POST['addToList'])) {
 	if (!isset($_SESSION['userId'])) {

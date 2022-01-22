@@ -1,6 +1,8 @@
 <?php
 namespace app;
 
+use Exception;
+
 class PatternRouter
 {
     private function stripParams($uri)
@@ -43,6 +45,7 @@ class PatternRouter
         $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
         if ($api)
             $filename = __DIR__ . '/api/controllers/' . $controllerName . '.php';
+
         if (file_exists($filename)) {
             require $filename;
         } else {

@@ -1,7 +1,7 @@
 <?php
-namespace app\services;
+namespace services;
 
-use app\repositories\WatchListRepository;
+use repositories\WatchListRepository;
 
 class WatchListService
 {

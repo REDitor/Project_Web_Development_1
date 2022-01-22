@@ -1,7 +1,7 @@
 <?php
-namespace app\services;
+namespace services;
 
-use app\repositories\MoviesRepository;
+use repositories\MoviesRepository;
 
 class MovieService
 {

@@ -1,7 +1,7 @@
 <?php
 
-use app\models\User;
-use app\services\UserService;
+use models\User;
+use services\UserService;
 
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../models/user.php';

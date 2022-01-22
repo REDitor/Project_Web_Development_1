@@ -57,10 +57,6 @@ function displayCreateList() {
 
     const createNewListSection = document.getElementById('createNewListSection');
     createNewListSection.appendChild(formContainer);
-
-    cancelListButton.addEventListener('button', (event) => {
-        createNewListSection.innerHTML = "";
-    })
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {

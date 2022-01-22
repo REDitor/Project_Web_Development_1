@@ -1,9 +1,9 @@
 <?php
 
-namespace app\api\controllers;
+namespace api\controllers;
 
-use app\models\WatchList;
-use app\services\WatchListService;
+use models\WatchList;
+use services\WatchListService;
 
 class MyListsController
 {

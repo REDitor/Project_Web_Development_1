@@ -1,7 +1,5 @@
 <?php
-namespace app\controllers;
-
-include 'autoload.php';
+namespace controllers;
 
 class Controller {
     function displayView($model) {

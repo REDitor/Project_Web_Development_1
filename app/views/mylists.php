@@ -1,6 +1,6 @@
 <?php
 
-use app\services\WatchListService;
+use services\WatchListService;
 
 if (!isset($_SESSION['userId'])) {
 	header('location: login');
