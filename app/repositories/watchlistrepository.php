@@ -8,12 +8,13 @@ class WatchListRepository extends Repository
 {
     public function getListsByUserId($userId) {
         try {
-            $stmt = $this->connection->prepare("SELECT watchlistId, userId, name, description
+            $stmt = $this->connection->prepare("SELECT watchListId, userId, name, description
                                                 FROM watchlists
                                                 WHERE userId = :userId");
 
             $stmt->bindParam(':userId', $userId);
             $stmt->execute();
+
             return $stmt->fetchAll(PDO::FETCH_CLASS, 'models\WatchList');
         } catch (PDOException $pdoe) {
             echo $pdoe;
@@ -33,9 +34,9 @@ class WatchListRepository extends Repository
     public function deleteById($watchListId) {
         try {
             $stmt = $this->connection->prepare("DELETE FROM watchlist_item_junction
-                                                WHERE watchlistId = :watchListId;
+                                                WHERE watchListId = :watchListId;
                                                 DELETE FROM watchlists
-                                                WHERE watchlistId = :watchListId");
+                                                WHERE watchListId = :watchListId");
             $stmt->bindParam(':watchListId', $watchListId);
             $stmt->execute();
         } catch (PDOException $pdeo) {
@@ -46,7 +47,7 @@ class WatchListRepository extends Repository
     //only for testing TODO: remove
     public function getAll() {
         try {
-            $stmt = $this->connection->prepare("SELECT watchlistId, name, description
+            $stmt = $this->connection->prepare("SELECT watchListId, name, description
                                             FROM watchlists");
 
             $stmt->execute();

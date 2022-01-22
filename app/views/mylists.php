@@ -70,7 +70,7 @@ if (!isset($_SESSION['userId'])) {
 									<th><?php echo $watchList->getName(); ?></th>
 									<td><?php echo $watchList->getDescription(); ?></td>
 									<td align="right">
-										<button onclick="deleteWatchList();" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
+										<button onclick="deleteWatchList(<?php echo $watchList->getWatchListId() ?>);" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
 									</td>
 								</tr>
 								<?php
