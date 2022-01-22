@@ -1,6 +1,5 @@
 <?php
-use controllers\Controller;
-include 'autoload.php';
+use app\controllers\Controller;
 
 class LogoutController extends Controller
 {

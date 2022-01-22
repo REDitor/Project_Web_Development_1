@@ -1,5 +1,5 @@
 <?php
-namespace models;
+namespace app\models;
 
 class Movie extends Item
 {

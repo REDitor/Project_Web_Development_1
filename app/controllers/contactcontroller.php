@@ -1,7 +1,5 @@
 <?php
-use controllers\Controller;
-
-include 'autoload.php';
+use app\controllers\Controller;
 
 class ContactController extends Controller{
     public function index() {

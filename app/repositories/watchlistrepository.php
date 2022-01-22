@@ -1,5 +1,5 @@
 <?php
-namespace repositories;
+namespace app\repositories;
 
 use PDO;
 use PDOException;
@@ -8,12 +8,23 @@ class WatchListRepository extends Repository
 {
     public function getListsByUserId($userId) {
         try {
-            $stmt = $this->connection->prepare("SELECT watchlistId, name, description
+            $stmt = $this->connection->prepare("SELECT watchlistId, userId, name, description
                                                 FROM watchlists
                                                 WHERE userId = :userId");
 
             $stmt->bindParam(':userId', $userId);
+            $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_CLASS, 'models\WatchList');
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
+
+    public function insertWatchList($watchList) {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO watchlists (userId, name, description)
+                                                VALUES (?, ?, ?)");
+            $stmt->execute([$_SESSION['userId'], $watchList->getName(), $watchList->getDescription()]);
         } catch (PDOException $pdoe) {
             echo $pdoe;
         }

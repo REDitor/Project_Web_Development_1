@@ -13,9 +13,6 @@
 	<title>Curtains | Contact</title>
 </head>
 
-<!--FIXME: remove whitespace under footer-->
-<!--FIXME: imges and css not loading (from seperate files)-->
-
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
 		<?php

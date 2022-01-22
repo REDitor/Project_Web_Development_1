@@ -1,6 +1,6 @@
 <?php
 
-use services\UserService;
+use app\services\UserService;
 
 if (isset($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];
@@ -42,12 +42,11 @@ if (isset($_SESSION['userId'])) {
 							   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-user"></i>
 							</a>
-							<div class="dropdown-menu dropdown-menu-start"
+							<div class="dropdown-menu dropdown-menu-start px-2"
 							     aria-labelledby="userDropdown">
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-dark nav-user-name">
 										<?php
-										require_once __DIR__ . '/../../services/userservice.php';
 										$user_service = new UserService();
 										echo $user_service->getUsernameById($userId);
 										?>

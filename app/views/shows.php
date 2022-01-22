@@ -1,5 +1,7 @@
 <?php
 
+use app\services\ShowsService;
+use app\services\WatchListService;
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +23,6 @@
 <body class="bg-white text-dark">
 	<header id="hero" class="hero">
 		<?php
-
-		use services\ShowsService;
-
 		include __DIR__ . '/elements/navbar.php';
 		?>
 	</header>
@@ -59,8 +58,22 @@
 												<?php echo $show->getNumberOfEpisodes(); ?> episodes</small>
 										</p>
 									</section>
-									<button name="addToList"
-									        class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark"></button>
+									<div class="dropdown">
+										<button class="btn btn-danger float-end" type="button" data-toggle="dropdown">
+											<i class="fa-regular fa-bookmark"></i>
+										</button>
+										<div class="dropdown-menu dropdown-start px-2">
+											<p><strong>Add to List:</strong></p>
+											<?php
+											$watchList_service = new WatchListService();
+											foreach ($watchList_service->getListsByUserId($_SESSION['userId']) as $watchList) {
+												?>
+												<a class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
+												<?php
+											}
+											?>
+										</div>
+									</div>
 								</section>
 							</section>
 						</section>

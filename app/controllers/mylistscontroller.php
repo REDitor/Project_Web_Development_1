@@ -1,6 +1,5 @@
 <?php
-use controllers\Controller;
-include 'autoload.php';
+use app\controllers\Controller;
 
 class MyListsController extends Controller {
     public function index() {

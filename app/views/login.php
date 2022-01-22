@@ -1,6 +1,6 @@
 <?php
 
-use services\UserService;
+use app\services\UserService;
 
 if (isset($_POST['login'])) {
 	$username = $_POST['usernameLogin'];

@@ -11,27 +11,7 @@
     <link rel="shortcut icon" type="image/jpg" href="../public/img/favicon/favicon.svg" />
 	<link rel="stylesheet" type="text/css" href="style.css">
     <title>Curtains | About</title>
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: #fff;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .logo {
-            flex: none;
-            font-weight: 400;
-        }
-
-        .navbar ul a:hover {
-            border-bottom: #df4759 1px solid;
-        }
-    </style>
 </head>
-
-<!--FIXME: remove whitespace under footer-->
-<!--FIXME: imges and css not loading (from seperate files)-->
 
 <body class="bg-white text-dark">
     <header id="hero" class="hero">

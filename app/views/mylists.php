@@ -1,5 +1,10 @@
 <?php
-use services\WatchListService;
+
+use app\services\WatchListService;
+
+if (!isset($_SESSION['userId'])) {
+	header('location: login');
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,14 +25,7 @@ use services\WatchListService;
 </head>
 
 <body class="bg-white text-dark">
-
-
-	<?php
-	//temporary all lists
-	$watchListsService = new WatchListService();
-	$watchLists = $watchListsService->getListsByUserId($_SESSION['userId']);
-	?>
-
+	<script src="watchlists.js"></script>
 	<header id="hero" class="hero">
 		<?php
 		include __DIR__ . '/elements/navbar.php';
@@ -43,7 +41,11 @@ use services\WatchListService;
 					</li>
 					<li class="breadcrumb-item active">My Lists</li>
 				</ol>
-				<h2>My Lists</h2>
+				<section class="d-flex justify-content-between">
+					<h2>My Lists</h2>
+					<button onclick="displayCreateList();" class="btn btn-success btn-sm h-50"> + New List</button>
+				</section>
+				<section id="createNewListSection" class="mb-3 col-sm-11 col-md-8 col-lg-6 col-xl-4 m-auto my-5 text-center"></section>
 				<section class="pb-5">
 					<table class="table table-hover">
 						<thead class="table-dark">
@@ -53,7 +55,27 @@ use services\WatchListService;
 								<th></th>
 							</tr>
 						</thead>
-						<tbody id="watchListsTable"></tbody>
+						<tbody id="watchListsTableBody">
+							
+
+							<!--							To be implemented with javascript-->
+							<?php
+							$watchListsService = new WatchListService();
+							$watchLists = $watchListsService->getListsByUserId($_SESSION['userId']);
+							foreach ($watchLists as $watchList) {
+								?>
+								<tr>
+									<th><?php echo $watchList->getName(); ?></th>
+									<td><?php echo $watchList->getDescription(); ?></td>
+									<td align="right">
+										<button class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
+									</td>
+								</tr>
+								<?php
+							}
+							?>
+
+						</tbody>
 					</table>
 				</section>
 			</section>

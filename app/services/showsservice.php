@@ -1,7 +1,7 @@
 <?php
-namespace services;
+namespace app\services;
 
-use repositories\ShowsRepository;
+use app\repositories\ShowsRepository;
 
 class ShowsService
 {

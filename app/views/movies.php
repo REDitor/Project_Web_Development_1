@@ -1,6 +1,8 @@
 <?php
 
-use services\MovieService;
+
+use app\services\MovieService;
+use app\services\WatchListService;
 
 if (isset($_POST['addToList'])) {
 	if (!isset($_SESSION['userId'])) {
@@ -65,9 +67,35 @@ if (isset($_POST['addToList'])) {
 												Duration: <?php echo $movie->getDurationInMinutes(); ?> minutes</small>
 										</p>
 									</section>
-									<button name="addToList"
-									        class="btn btn-danger float-end w-25 h-50 fa-regular fa-bookmark">
-									</button>
+									<?php
+									if (!isset($_SESSION['userId'])) {
+										?>
+										<a href="login" class="btn btn-danger float-end" type="button">
+											<i class="fa-regular fa-bookmark"></i>
+										</a>
+										<?php
+									} else {
+										?>
+										<div class="dropdown">
+											<button class="btn btn-danger float-end" type="button"
+											        data-toggle="dropdown">
+												<i class="fa-regular fa-bookmark"></i>
+											</button>
+											<div class="dropdown-menu dropdown-start px-2">
+												<p><strong>Add to List:</strong></p>
+												<?php
+												$watchList_service = new WatchListService();
+												foreach ($watchList_service->getListsByUserId($_SESSION['userId']) as $watchList) {
+													?>
+													<a class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
+													<?php
+												}
+												?>
+											</div>
+										</div>
+										<?php
+									}
+									?>
 								</section>
 							</section>
 						</section>

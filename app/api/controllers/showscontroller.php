@@ -1,7 +1,7 @@
 <?php
-namespace api\controllers;
+namespace app\api\controllers;
 
-use services\ShowsService;
+use app\services\ShowsService;
 
 class ShowsController
 {

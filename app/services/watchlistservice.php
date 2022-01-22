@@ -1,19 +1,24 @@
 <?php
-namespace services;
+namespace app\services;
 
-use repositories\WatchListRepository;
+use app\repositories\WatchListRepository;
 
 class WatchListService
 {
     public function getListsByUserId($userId) {
         $repository = new WatchListRepository();
-        return $repository->getListsByUserId($userId);
+        return  $repository->getListsByUserId($userId);
     }
 
     //for testing TODO: remove
     public function getAll() {
         $repository = new WatchListRepository();
         return $repository->getAll();
+    }
+
+    public function insertWatchList($watchList) {
+        $repository = new WatchListRepository();
+        $repository->insertWatchList($watchList);
     }
 
     public function deleteById($watchListId) {
