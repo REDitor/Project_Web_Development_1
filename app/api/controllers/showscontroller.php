@@ -1,7 +1,8 @@
 <?php
-namespace api\controllers;
 
 use services\ShowsService;
+
+include 'autoload.php';
 
 class ShowsController
 {

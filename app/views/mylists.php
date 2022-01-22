@@ -25,7 +25,9 @@ if (!isset($_SESSION['userId'])) {
 </head>
 
 <body class="bg-white text-dark">
+
 	<script src="watchlists.js"></script>
+
 	<header id="hero" class="hero">
 		<?php
 		include __DIR__ . '/elements/navbar.php';
@@ -68,7 +70,7 @@ if (!isset($_SESSION['userId'])) {
 									<th><?php echo $watchList->getName(); ?></th>
 									<td><?php echo $watchList->getDescription(); ?></td>
 									<td align="right">
-										<button class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
+										<button onclick="deleteWatchList();" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
 									</td>
 								</tr>
 								<?php

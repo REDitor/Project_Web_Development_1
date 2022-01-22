@@ -32,7 +32,12 @@ class WatchListRepository extends Repository
 
     public function deleteById($watchListId) {
         try {
-
+            $stmt = $this->connection->prepare("DELETE FROM watchlist_item_junction
+                                                WHERE watchlistId = :watchListId;
+                                                DELETE FROM watchlists
+                                                WHERE watchlistId = :watchListId");
+            $stmt->bindParam(':watchListId', $watchListId);
+            $stmt->execute();
         } catch (PDOException $pdeo) {
             echo $pdeo;
         }

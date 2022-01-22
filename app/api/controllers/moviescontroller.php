@@ -1,7 +1,8 @@
 <?php
-namespace api\controllers;
 
 use services\MovieService;
+
+include 'autoload.php';
 
 class MoviesController {
     private MovieService $movie_Service;

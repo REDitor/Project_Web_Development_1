@@ -40,6 +40,7 @@ function displayCreateList() {
     createListButton.className = 'btn btn-success btn-sm';
     createListButton.innerText = 'Create';
     createListButton.style.width = '45%';
+    createListButton.onclick = createWatchList;
 
     const cancelListButton = document.createElement('button');
     cancelListButton.name = 'cancelCreateList';
@@ -60,7 +61,7 @@ function displayCreateList() {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    getWatchListsForUser();
+    getWatchListsForUser(sessionStorage.getItem('userId'));
 })
 
 function displayWatchlists(watchlists) {
@@ -84,9 +85,9 @@ function displayWatchlists(watchlists) {
 
             const deleteButton = document.createElement('button');
             deleteButton.className = 'btn btn-danger btn-sm';
-            deleteButton.addEventListener('click', (event) => {
-                deleteWatchList();
-            })
+            // deleteButton.addEventListener('click', (event) => {
+            //     deleteWatchList();
+            // })
 
             const trashCanIcon = document.createElement('i');
             trashCanIcon.className = 'fas fa-trash-can';
@@ -103,20 +104,52 @@ function getWatchListsForUser(userId) {
     const watchListsTable = document.getElementById('watchListsTable');
     watchListsTable.innerHTML = "";
 
-    fetch('api/mylists')
+    fetch(`api/mylists/${userId}`)
         .then(result => result.json())
         .then((data) => {
             displayWatchlists(data);
         })
-        // .catch((err) => console.error(err));
+        .catch((err) => console.error(err));
 }
 
 function deleteWatchList(watchListId) {
-
+    const url = `api/myLists/deleteWatchList/${watchListId}`;
+    fetch(url, {
+        method: 'DELETE',
+    })
+        .then(output => {
+            // getWatchListsForUser();
+        })
+        .catch(err => console.error(err));
+    alert('successfully deleted list');
 }
 
 function createWatchList() {
+    const listName = document.getElementById('createListName');
+    const listDescription = document.getElementById('createListDescription');
 
+    const data = {
+        'name': listName.value,
+        'description': listDescription.value
+    }
+
+    fetch('api/mylists/createWatchList', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then(output => {
+            listName.value = null;
+            listDescription.value = null;
+
+            // getWatchListsForUser();
+
+        })
+        .catch(err => console.error(err));
+
+    alert(`Successfully created ${listName.value}`);
 }
 
 //List Details/Contents
