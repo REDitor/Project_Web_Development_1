@@ -1,0 +1,38 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.logo {
+    flex: none;
+    font-weight: 400;
+}
+
+#navbar {
+    z-index: 9999;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar ul a:hover {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 2600px) {
+    .navbar ul .nav-link:hover {
+        border-bottom: #df4759 1px solid;
+        margin-bottom: -1px;
+    }
+
+    nav {
+        width: 100%;
+        position: absolute;
+    }
+}
