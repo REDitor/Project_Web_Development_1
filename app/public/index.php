@@ -12,7 +12,7 @@ $router = new PatternRouter();
 $router->route($uri);
 
 //Must:
-//FIXME: !! deleting watchlists not working
+//FIXME: confirm reloads page when creating watchLists
 
 //TODO: !! use API to load movies and shows
 //TODO: !! use javascript to CRUD?
@@ -23,5 +23,8 @@ $router->route($uri);
 //FIXME: find solution for active nav
 //FIXME: User dropdown not aligned correctly
 
+//TODO: set repository as construct value in service
+
 //Want:
+//TODO: preset queries in repositories
 //TODO: make favicon color danger

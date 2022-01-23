@@ -10,6 +10,11 @@ class WatchListService
         return  $repository->getListsByUserId($userId);
     }
 
+    public function getUserIdByWatchListId($watchListId) {
+        $repository = new WatchListRepository();
+        return $repository->getUserIdByWatchListId($watchListId);
+    }
+
     //for testing TODO: remove
     public function getAll() {
         $repository = new WatchListRepository();

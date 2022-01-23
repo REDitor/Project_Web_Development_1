@@ -1,7 +1,4 @@
 <?php
-
-use services\WatchListService;
-
 if (!isset($_SESSION['userId'])) {
 	header('location: login');
 }
@@ -24,7 +21,7 @@ if (!isset($_SESSION['userId'])) {
 	<link rel="stylesheet" type="text/css" href="mylists.css">
 </head>
 
-<body class="bg-white text-dark">
+<body class="bg-white text-dark" onload="getWatchListsForUser(<?php echo $_SESSION['userId']; ?>);">
 
 	<script src="watchlists.js"></script>
 
@@ -58,27 +55,9 @@ if (!isset($_SESSION['userId'])) {
 							</tr>
 						</thead>
 						<tbody id="watchListsTableBody">
-							
-
-							<!--							To be implemented with javascript-->
-							<?php
-							$watchListsService = new WatchListService();
-							$watchLists = $watchListsService->getListsByUserId($_SESSION['userId']);
-							foreach ($watchLists as $watchList) {
-								?>
-								<tr>
-									<th><?php echo $watchList->getName(); ?></th>
-									<td><?php echo $watchList->getDescription(); ?></td>
-									<td align="right">
-										<button onclick="deleteWatchList(<?php echo $watchList->getWatchListId() ?>);" class="btn btn-danger btn-sm"><i class="fas fa-trash-can"></i></button>
-									</td>
-								</tr>
-								<?php
-							}
-							?>
-
 						</tbody>
 					</table>
+					<div id="debugDiv"></div>
 				</section>
 			</section>
 		</section>

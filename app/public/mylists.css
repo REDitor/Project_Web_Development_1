@@ -1,3 +1,7 @@
 footer {
     position: absolute;
 }
+
+#createNewListSection {
+    height: 0;
+}

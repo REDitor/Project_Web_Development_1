@@ -21,6 +21,21 @@ class WatchListRepository extends Repository
         }
     }
 
+    public function getUserIdByWatchListId($watchlistId) {
+        try {
+            $stmt = $this->connection->prepare("SELECT userId
+                                                FROM watchlists
+                                                WHERE watchlistId = :watchListId");
+
+            $stmt->bindParam(':watchListId', $watchlistId);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
+
     public function insertWatchList($watchList) {
         try {
             $stmt = $this->connection->prepare("INSERT INTO watchlists (userId, name, description)

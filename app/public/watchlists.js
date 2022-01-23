@@ -1,3 +1,4 @@
+//Dynamic UI
 function displayCreateList() {
     document.getElementById('createNewListSection').innerHTML = "";
 
@@ -40,7 +41,9 @@ function displayCreateList() {
     createListButton.className = 'btn btn-success btn-sm';
     createListButton.innerText = 'Create';
     createListButton.style.width = '45%';
-    createListButton.onclick = createWatchList;
+    createListButton.addEventListener('click', (event) => {
+        createWatchList();
+    })
 
     const cancelListButton = document.createElement('button');
     cancelListButton.name = 'cancelCreateList';
@@ -60,15 +63,23 @@ function displayCreateList() {
     createNewListSection.appendChild(formContainer);
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    getWatchListsForUser(sessionStorage.getItem('userId'));
-})
+function getWatchListsForUser(userId) {
+    const watchListsTableBody = document.getElementById('watchListsTableBody');
+    watchListsTableBody.innerHTML = "";
 
-function displayWatchlists(watchlists) {
+    fetch(`api/mylists/getListsByUserId/${userId}`)
+        .then(res => res.json())
+        .then((data) => {
+            displayWatchLists(data);
+        })
+        .catch((err) => console.error(err));
+}
+
+function displayWatchLists(watchLists) {
     const watchListsTable = document.getElementById('watchListsTableBody');
 
-    watchlists.forEach(
-        watchlist => {
+    watchLists.forEach(
+        watchList => {
             const tr = document.createElement('tr');
             tr.id = 'watchListRow';
             tr.addEventListener('click', (event) => {
@@ -76,18 +87,19 @@ function displayWatchlists(watchlists) {
             })
 
             const nameTh = document.createElement('th');
-            // nameTh.innerHTML = '${watchlist.name}';
+            nameTh.innerHTML = watchList.name;
 
             const descriptionTd = document.createElement('td');
-            // descriptionTd.innertext = watchlist.description;
+            descriptionTd.innerHTML = watchList.description;
 
             const buttonTd = document.createElement('td');
 
             const deleteButton = document.createElement('button');
             deleteButton.className = 'btn btn-danger btn-sm';
-            // deleteButton.addEventListener('click', (event) => {
-            //     deleteWatchList();
-            // })
+            deleteButton.addEventListener('click', (event) => {
+                void deleteWatchList(watchList.watchListId);
+                alert(`Successfully Deleted List: ${watchList.name}`);
+            });
 
             const trashCanIcon = document.createElement('i');
             trashCanIcon.className = 'fas fa-trash-can';
@@ -100,28 +112,26 @@ function displayWatchlists(watchlists) {
     )
 }
 
-function getWatchListsForUser(userId) {
-    const watchListsTable = document.getElementById('watchListsTable');
-    watchListsTable.innerHTML = "";
-
-    fetch(`api/mylists/${userId}`)
-        .then(result => result.json())
-        .then((data) => {
-            displayWatchlists(data);
-        })
-        .catch((err) => console.error(err));
+//CRUD
+function getUserId() {
+    return fetch(`api/myLists/getUserId`)
+        .then(res => res.json())
+        .then(data => {
+            return data
+        });
 }
 
-function deleteWatchList(watchListId) {
-    const url = `api/myLists/deleteWatchList/${watchListId}`;
+async function deleteWatchList(watchListId) {
+    const userId = await getUserId();
+
+    const url = `api/myLists/deleteWatchlist/${watchListId}`
     fetch(url, {
         method: 'DELETE',
     })
-        .then(output => {
-            // getWatchListsForUser();
+        .then(output =>  {
+            getWatchListsForUser(userId);
         })
         .catch(err => console.error(err));
-    alert('successfully deleted list');
 }
 
 function createWatchList() {
@@ -133,6 +143,8 @@ function createWatchList() {
         'description': listDescription.value
     }
 
+
+
     fetch('api/mylists/createWatchList', {
         method: 'POST',
         headers: {
@@ -143,21 +155,15 @@ function createWatchList() {
         .then(output => {
             listName.value = null;
             listDescription.value = null;
-
-            // getWatchListsForUser();
-
+            const userId = getUserId();
+            getWatchListsForUser(userId);
         })
         .catch(err => console.error(err));
-
-    alert(`Successfully created ${listName.value}`);
 }
 
 //List Details/Contents
-
 function displayListDetails($watchList) {
-    const row = document.getElementById('watchListRow');
 
-    row.appendChild()
 }
 
 function getItemsForList($watchlist) {
