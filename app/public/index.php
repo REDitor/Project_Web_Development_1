@@ -21,6 +21,7 @@ $router->route($uri);
 //Should:
 //TODO: !! use API to load movies and shows
 
+//FIXME: !! Login card not centered on page
 //FIXME: alert after list creation shows before page update
 //FIXME: find solution for active nav
 //FIXME: User dropdown not aligned correctly
