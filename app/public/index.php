@@ -14,11 +14,13 @@ $router->route($uri);
 //Must:
 //FIXME: confirm reloads page when creating watchLists
 
-//TODO: !! use API to load movies and shows
+//TODO: !! On list click show list items (including remove button)
 //TODO: !! use javascript to CRUD?
 //TODO: !! Implement functionality for cancel button (creating lists)
 
 //Should:
+//TODO: !! use API to load movies and shows
+
 //FIXME: alert after list creation shows before page update
 //FIXME: find solution for active nav
 //FIXME: User dropdown not aligned correctly
