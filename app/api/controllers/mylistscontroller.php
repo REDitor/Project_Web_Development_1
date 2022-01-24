@@ -1,6 +1,7 @@
 <?php
 
 use models\WatchList;
+use services\MovieService;
 use services\WatchListService;
 
 include 'autoload.php';
@@ -8,10 +9,12 @@ include 'autoload.php';
 class MyListsController
 {
     private WatchListService $watchList_service;
+    private MovieService $movie_service;
 
     public function __construct()
     {
         $this->watchList_service = new WatchListService();
+        $this->movie_service = new MovieService();
     }
 
     public function index()
@@ -43,5 +46,9 @@ class MyListsController
     public function deleteWatchList($watchListId)
     {
         $this->watchList_service->deleteById($watchListId);
+    }
+
+    public function getMoviesByWatchListId($watchListId) {
+        echo json_encode($this->movie_service->getMoviesByWatchListId($watchListId));
     }
 }

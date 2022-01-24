@@ -21,7 +21,7 @@ if (!isset($_SESSION['userId'])) {
 	<link rel="stylesheet" type="text/css" href="mylists.css">
 </head>
 
-<body class="bg-white text-dark" onload="getWatchListsForUser(<?php echo $_SESSION['userId']; ?>);">
+<body class="bg-white text-dark">
 
 	<script src="watchlists.js"></script>
 
@@ -38,23 +38,38 @@ if (!isset($_SESSION['userId'])) {
 					<li class="breadcrumb-item">
 						<a class="text-decoration-none text-danger" href="home">Home</a>
 					</li>
-					<li class="breadcrumb-item active">My Lists</li>
+					<li class="breadcrumb-item">
+						<a class="text-decoration-none text-danger" href="myLists">My Lists</a>
+					</li>
+					<li class="breadcrumb-item active"><?php echo "{ListName}" ?></li>
 				</ol>
 				<section class="d-flex justify-content-between">
-					<h2>My Lists</h2>
-					<button onclick="displayCreateList();" class="btn btn-success btn-sm h-50"> + New List</button>
+					<h2>My Lists | <?php echo "{ListName}" ?></h2>
 				</section>
-				<section id="createNewListSection" class="mb-3 col-sm-11 col-md-8 col-lg-6 col-xl-4 m-auto my-5 text-center h-50"></section>
-				<section id="tableSection" class="pb-5">
-					<table id="watchListTable" class="table table-hover">
+				<section id="detailsTableSection" class="pb-5">
+					<table id="moviesTable" class="table table-hover">
 						<thead class="table-dark">
 							<tr>
-								<th>Name</th>
-								<th>Description</th>
+								<th>Title</th>
+								<th>Writer</th>
+								<th>Duration (min.)</th>
 								<th></th>
 							</tr>
 						</thead>
-						<tbody id="watchListsTableBody">
+						<tbody id="moviesTableBody">
+						</tbody>
+					</table>
+
+					<table id="showsTable" class="table table-hover">
+						<thead class="table-dark">
+							<tr>
+								<th>Title</th>
+								<th>Writer</th>
+								<th>Episodes</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="showsTableBody">
 						</tbody>
 					</table>
 					<div id="debugDiv"></div>

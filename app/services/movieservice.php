@@ -9,4 +9,9 @@ class MovieService
         $repository = new MoviesRepository();
         return $repository->getAll();
     }
+
+    public function getMoviesByWatchListId($watchListId) {
+        $repository = new MoviesRepository();
+        return $repository->getByWatchListId($watchListId);
+    }
 }

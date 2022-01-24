@@ -1,4 +1,4 @@
-//Dynamic UI
+//region WatchLists
 function displayCreateList() {
     document.getElementById('createNewListSection').innerHTML = "";
 
@@ -72,31 +72,20 @@ function cancelCreateList() {
     createNewListSecion.removeChild(formContainer);
 }
 
-function getWatchListsForUser(userId) {
-    const watchListsTableBody = document.getElementById('watchListsTableBody');
-    watchListsTableBody.innerHTML = "";
-
-    fetch(`api/mylists/getListsByUserId/${userId}`)
-        .then(res => res.json())
-        .then((data) => {
-            displayWatchLists(data);
-        })
-        .catch((err) => console.error(err));
-}
-
 function displayWatchLists(watchLists) {
-    const watchListsTable = document.getElementById('watchListsTableBody');
+    const watchListsTableBody = document.getElementById('watchListsTableBody');
 
     watchLists.forEach(
         watchList => {
             const tr = document.createElement('tr');
             tr.id = 'watchListRow';
-            tr.addEventListener('click', (event) => {
-                displayListDetails();
-            })
+            tr.style.padding = '5rem';
 
             const nameTh = document.createElement('th');
             nameTh.innerHTML = watchList.name;
+            nameTh.addEventListener('click', (event) => {
+                displayListDetails(watchList.watchListId);
+            })
 
             const descriptionTd = document.createElement('td');
             descriptionTd.innerHTML = watchList.description;
@@ -104,7 +93,7 @@ function displayWatchLists(watchLists) {
             const buttonTd = document.createElement('td');
 
             const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-danger btn-sm';
+            deleteButton.className = 'btn btn-danger btn-sm py-1';
             deleteButton.addEventListener('click', (event) => {
                 void deleteWatchList(watchList.watchListId);
                 alert(`Successfully Deleted List: ${watchList.name}`);
@@ -116,9 +105,17 @@ function displayWatchLists(watchLists) {
             deleteButton.appendChild(trashCanIcon);
             buttonTd.appendChild(deleteButton);
             tr.append(nameTh, descriptionTd, buttonTd);
-            watchListsTable.appendChild(tr);
+            watchListsTableBody.appendChild(tr);
         }
     )
+}
+
+function displayListDetails(watchListId) {
+    window.location.href = 'listdetails';
+    getMoviesForList(watchListId);
+    // getShowsForList(watchListId);
+    // displayMovies(watchListId);
+    // displayShows(watchListId);
 }
 
 //CRUD
@@ -130,17 +127,17 @@ function getUserId() {
         });
 }
 
-async function deleteWatchList(watchListId) {
-    const userId = await getUserId();
+function getWatchListsForUser(userId) {
+    if (document.body.contains(document.getElementById('watchListsTableBody')))
+        document.getElementById('watchListsTableBody').innerHTML = "";
 
-    const url = `api/myLists/deleteWatchlist/${watchListId}`
-    fetch(url, {
-        method: 'DELETE',
-    })
-        .then(output =>  {
-            getWatchListsForUser(userId);
+
+    fetch(`api/mylists/getListsByUserId/${userId}`)
+        .then(res => res.json())
+        .then((data) => {
+            displayWatchLists(data);
         })
-        .catch(err => console.error(err));
+        .catch((err) => console.error(err));
 }
 
 function createWatchList() {
@@ -151,7 +148,6 @@ function createWatchList() {
         'name': listName.value,
         'description': listDescription.value
     }
-
 
 
     fetch('api/mylists/createWatchList', {
@@ -170,19 +166,134 @@ function createWatchList() {
         .catch(err => console.error(err));
 }
 
-//List Details/Contents
-function displayListDetails($watchList) {
+async function deleteWatchList(watchListId) {
+    const userId = await getUserId();
+
+    const url = `api/myLists/deleteWatchlist/${watchListId}`
+    fetch(url, {
+        method: 'DELETE',
+    })
+        .then(output => {
+            getWatchListsForUser(userId);
+        })
+        .catch(err => console.error(err));
+}
+//endregion
+
+//region WatchListItems(Movies/Shows)
+function getMoviesForList(watchListId) {
+
+    if (document.body.contains(document.getElementById('moviesTableBody')))
+        document.getElementById('moviesTableBody').innerHTML = "";
+
+    fetch (`api/myLists/getMoviesByWatchListId/${watchListId}`)
+        .then(res => res.json())
+        .then((data) => {
+
+            displayMovies(data, watchListId);
+        })
+        .catch((err) => console.error(err));
+}
+
+function getShowsForList(watchListId) {
+    if (document.body.contains(document.getElementById('showsTableBody')))
+        document.getElementById('showsTableBody').innerHTML = "";
+
+    fetch (`api/myLists/getShowsByWatchListId/${watchListId}`)
+        .then(res => res.json())
+        .then((data) => {
+            displayShows(data, watchListId);
+        })
+        .catch((err) => console.error(err));
+}
+
+function displayMovies(movies, watchListId) {
+    const moviesTableBody = document.getElementById('moviesTableBody');
+
+    movies.forEach(
+        movie => {
+            const tr = document.createElement('tr');
+            tr.id = 'moviesRow';
+            tr.style.padding = '5rem';
+
+            const titleTh = document.createElement('th');
+            titleTh.innerHTML = movie.title;
+
+            const writerTd = document.createElement('td');
+            writerTd.innerHTML = movie.writer;
+
+            const durationTd = document.createElement('td');
+            durationTd.innerHTML = movie.durationInMinutes;
+
+            const buttonTd = document.createElement('td');
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger btn-sm py-1';
+            deleteButton.addEventListener('click', (event) => {
+                void removeFromList(movie.itemId, watchListId);
+                alert(`Successfully removed ${movie.title}`); //change to confirm dialog
+            });
+
+            const trashCanIcon = document.createElement('i');
+            trashCanIcon.className = 'fas fa-trash-can';
+
+            deleteButton.appendChild(trashCanIcon);
+            buttonTd.appendChild(deleteButton);
+            tr.append(titleTh, writerTd, durationTd, buttonTd);
+            moviesTableBody.appendChild(tr);
+        }
+    )
+}
+
+function displayShows(shows, watchListId) {
+    const showsTableBody = document.getElementById('showsTableBody');
+
+    shows.forEach(
+        show => {
+            const tr = document.createElement('tr');
+            tr.id = 'moviesRow';
+            tr.style.padding = '5rem';
+
+            const titleTh = document.createElement('th');
+            titleTh.innerHTML = show.title;
+
+            const writerTd = document.createElement('td');
+            writerTd.innerHTML = show.writer;
+
+            const episodesTd = document.createElement('td');
+            episodesTd.innerHTML = show.numberOfEpisodes;
+
+            const buttonTd = document.createElement('td');
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger btn-sm py-1';
+            deleteButton.addEventListener('click', (event) => {
+                void removeFromList(show.itemId, watchListId);
+                alert(`Successfully removed ${show.title}`); //change to confirm dialog
+            });
+
+            const trashCanIcon = document.createElement('i');
+            trashCanIcon.className = 'fas fa-trash-can';
+
+            deleteButton.appendChild(trashCanIcon);
+            buttonTd.appendChild(deleteButton);
+            tr.append(titleTh, writerTd, episodesTd, buttonTd);
+            showsTableBody.appendChild(tr);
+        }
+    )
+}
+
+function removeFromList(itemId, watchListId) {
 
 }
 
-function getItemsForList($watchlist) {
+
+//endregion
+
+//region Movies
+
+//CRUD
+function addToList(itemId) {
 
 }
-
-function removeFromList(id) {
-
-}
-
-function addToList(item) {
-
-}
+//endregion

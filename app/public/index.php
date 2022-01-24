@@ -14,9 +14,7 @@ $router->route($uri);
 //Must:
 //FIXME: confirm reloads page when creating watchLists
 
-//TODO: !! On list click show list items (including remove button)
-//TODO: !! use javascript to CRUD?
-//TODO: !! Implement functionality for cancel button (creating lists)
+//FIXME: !! On list click show list items (including remove button) (element is null)
 
 //Should:
 //TODO: !! on delete list change alert to confirm
@@ -31,5 +29,7 @@ $router->route($uri);
 //TODO: fix footer spacing
 
 //Want:
+//TODO: merge listDetails items together with empty columns for empty data
+//TODO: insert whole createListSection instead of only form
 //TODO: preset queries in repositories
 //TODO: make favicon color danger
