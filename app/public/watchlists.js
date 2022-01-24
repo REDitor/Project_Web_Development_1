@@ -51,6 +51,9 @@ function displayCreateList() {
     cancelListButton.className = 'btn btn-outline-danger btn-sm'
     cancelListButton.innerText = 'Cancel';
     cancelListButton.style.width = '45%';
+    cancelListButton.addEventListener('click', (event) => {
+        cancelCreateList();
+    })
 
     //append
     formGroupName.appendChild(nameInput);
@@ -61,6 +64,12 @@ function displayCreateList() {
 
     const createNewListSection = document.getElementById('createNewListSection');
     createNewListSection.appendChild(formContainer);
+}
+
+function cancelCreateList() {
+    const createNewListSecion = document.getElementById('createNewListSection');
+    const formContainer = document.getElementById('formContainer');
+    createNewListSecion.removeChild(formContainer);
 }
 
 function getWatchListsForUser(userId) {

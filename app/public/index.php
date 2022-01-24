@@ -19,6 +19,7 @@ $router->route($uri);
 //TODO: !! Implement functionality for cancel button (creating lists)
 
 //Should:
+//TODO: !! on delete list change alert to confirm
 //TODO: !! use API to load movies and shows
 
 //FIXME: !! Login card not centered on page
@@ -27,6 +28,7 @@ $router->route($uri);
 //FIXME: User dropdown not aligned correctly
 
 //TODO: set repository as construct value in service
+//TODO: fix footer spacing
 
 //Want:
 //TODO: preset queries in repositories
