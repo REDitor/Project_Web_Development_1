@@ -30,4 +30,9 @@ class WatchListService
         $repository = new WatchListRepository();
         $repository->deleteById($watchListId);
     }
+
+    public function addToList($itemId, $watchListId) {
+        $repository = new WatchListRepository();
+        $repository->addToList($itemId, $watchListId);
+    }
 }

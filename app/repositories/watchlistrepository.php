@@ -71,4 +71,15 @@ class WatchListRepository extends Repository
             echo $pdeo;
         }
     }
+
+    public function addToList($itemId, $watchListId) {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO watchlist_item_junction (watchListId, itemId)
+                                                VALUES (?, ?)");
+
+            $stmt->execute([$watchListId, $itemId]);
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
 }

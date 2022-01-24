@@ -292,8 +292,26 @@ function removeFromList(itemId, watchListId) {
 
 //region Movies
 
-//CRUD
-function addToList(itemId) {
 
+//CRUD
+function addToList(itemId, watchListId) {
+
+
+    const data = {
+        'watchListId': watchListId,
+        'itemId': itemId
+    }
+
+    fetch('api/movies/addToList', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then(output => {
+            alert(`Successfully added to list`);
+        })
+        .catch(err => console.error(err));
 }
 //endregion
