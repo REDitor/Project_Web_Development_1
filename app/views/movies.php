@@ -84,7 +84,7 @@ if (isset($_POST['addToList'])) {
 											        data-toggle="dropdown">
 												<i class="fa-regular fa-bookmark"></i>
 											</button>
-											<div class="dropdown-menu dropdown-start px-2">
+											<div class="dropdown-menu px-2" style="right: 0; left: auto">
 												<p><strong>Add to List:</strong></p>
 												<?php
 												$watchList_service = new WatchListService();

@@ -8,7 +8,7 @@ if (isset($_SESSION['userId'])) {
 ?>
 
 <section id="navbar" class="navbar navbar-expand-xs navbar-expand-sm navbar-dark bg-dark fixed-top">
-	<a href="" class="text-decoration-none d-inline-block">
+	<a href="home" class="text-decoration-none d-inline-block">
 		<h1 class="logo ms-4 mt-2">
 			<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span
 				class="text-white">tains</span>
@@ -42,8 +42,7 @@ if (isset($_SESSION['userId'])) {
 							   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-user"></i>
 							</a>
-							<div class="dropdown-menu dropdown-menu-start px-2"
-							     aria-labelledby="userDropdown">
+							<div class="dropdown-menu px-2" aria-labelledby="userDropdown" style="right: 0; left: auto">
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-dark nav-user-name">
 										<?php

@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
 
 <body>
 	<section class="overlay"></section>
-		<section class="container text-center d-flex align-items-center justify-content-center">
+		<section class="container text-center d-flex">
 			<section class="card bg-dark text-white px-5 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
 				<form method="POST">
 					<h1 class="py-4">Login</h1>

@@ -218,8 +218,6 @@ function getShowsForList(watchListId) {
 }
 
 function displayMovies(movies, watchListId) {
-
-
     movies.forEach(
         movie => {
             const tr = document.createElement('tr');
