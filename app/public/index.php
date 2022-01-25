@@ -11,14 +11,24 @@ $uri = trim($_SERVER['REQUEST_URI'], '/');
 $router = new PatternRouter();
 $router->route($uri);
 
-//Must:
-//FIXME: confirm reloads page when creating watchLists
+//Rubrics:
+//TODO: forgot password
+//TODO: prevent sql injection
+//TODO: exceptions!?
+//TODO:
+//TODO:
+//TODO:
+//TODO:
+//TODO:
+//TODO:
 
+//Must:
+//FIXME: email password link not working
+//FIXME: confirm reloads page when creating watchLists
 //FIXME: !! On list click show list items (including remove button) (element is null)
 
 //Should:
-//TODO: !! on delete list change alert to confirm
-//TODO: !! use API to load movies and shows
+//TODO: feedback if username incorrect
 
 //FIXME: !! Login card not centered on page
 //FIXME: alert after list creation shows before page update

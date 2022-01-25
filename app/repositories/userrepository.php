@@ -47,4 +47,19 @@ class UserRepository extends Repository
             echo $pdoe;
         }
     }
+
+    function getEmail($email) {
+        try {
+            $stmt = $this->connection->prepare("SELECT email
+                                                FROM users
+                                                WHERE email = :email");
+
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
 }

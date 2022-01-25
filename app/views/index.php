@@ -11,10 +11,10 @@ if (isset($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];
 } else if (isset($_POST['register'])) {
 	if ($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['passConfirm'] != "") {
-		$email = $_POST['email'];
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$passConfirm = $_POST['passConfirm'];
+		$email = htmlspecialchars($_POST['email']);
+		$username = htmlspecialchars($_POST['username']);
+		$password = htmlspecialchars($_POST['password']);
+		$passConfirm = htmlspecialchars($_POST['passConfirm']);
 
 		if ($password == $passConfirm) {
 			//encrypt password
@@ -30,8 +30,7 @@ if (isset($_SESSION['userId'])) {
 			$user_service->insertUser($user);
 		}
 	} else {
-		echo "<script>alert('Please fill in all the fields!')</script>
-              <script>window.location = 'home#registration'</script>";
+		echo "<script>alert('Please fill in all the fields!')</script>";
 	}
 }
 //ini_set('display_errors', 1);

@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="/app/public/img/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
 	<link rel="stylesheet" type="text/css" href="login.css">
 	<title>Curtains | Login</title>
 </head>
@@ -41,7 +41,7 @@ if (isset($_POST['login'])) {
 					       class="form-control mb-3">
 					<button name="login" class="col-12 btn btn-danger btn-block">Login</button>
 					<p class="mt-4"><a class="text-decoration-none text-danger"
-					                   href="#">Forgot password?</a></p>
+					                   href="login/forgotPassword">Forgot password?</a></p>
 					<p class="mt-4"><small>New to Curtains? <a class="text-decoration-none text-danger"
 					                                           href="home#registration">Create an account</a></small>
 					</p>

@@ -95,8 +95,7 @@ function displayWatchLists(watchLists) {
             const deleteButton = document.createElement('button');
             deleteButton.className = 'btn btn-danger btn-sm py-1';
             deleteButton.addEventListener('click', (event) => {
-                void deleteWatchList(watchList.watchListId);
-                alert(`Successfully Deleted List: ${watchList.name}`);
+                void deleteWatchList(watchList.watchListId, watchList.name);
             });
 
             const trashCanIcon = document.createElement('i');
@@ -111,8 +110,9 @@ function displayWatchLists(watchLists) {
 }
 
 function displayListDetails(watchListId) {
-    window.location.href = 'listdetails';
     getMoviesForList(watchListId);
+
+
     // getShowsForList(watchListId);
     // displayMovies(watchListId);
     // displayShows(watchListId);
@@ -166,17 +166,19 @@ function createWatchList() {
         .catch(err => console.error(err));
 }
 
-async function deleteWatchList(watchListId) {
-    const userId = await getUserId();
+async function deleteWatchList(watchListId, watchListName) {
+    if (confirm(`Are you sure you want to delete ${watchListName}?`)) {
+        const userId = await getUserId();
 
-    const url = `api/myLists/deleteWatchlist/${watchListId}`
-    fetch(url, {
-        method: 'DELETE',
-    })
-        .then(output => {
-            getWatchListsForUser(userId);
+        const url = `api/myLists/deleteWatchlist/${watchListId}`
+        fetch(url, {
+            method: 'DELETE',
         })
-        .catch(err => console.error(err));
+            .then(output => {
+                getWatchListsForUser(userId);
+            })
+            .catch(err => console.error(err));
+    }
 }
 //endregion
 
@@ -189,7 +191,6 @@ function getMoviesForList(watchListId) {
     fetch (`api/myLists/getMoviesByWatchListId/${watchListId}`)
         .then(res => res.json())
         .then((data) => {
-
             displayMovies(data, watchListId);
         })
         .catch((err) => console.error(err));
