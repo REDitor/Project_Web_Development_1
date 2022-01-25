@@ -15,12 +15,6 @@ $router->route($uri);
 //TODO: forgot password
 //TODO: prevent sql injection
 //TODO: exceptions!?
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
 
 //Must:
 //FIXME: email password link not working
@@ -40,6 +34,5 @@ $router->route($uri);
 
 //Want:
 //TODO: merge listDetails items together with empty columns for empty data
-//TODO: insert whole createListSection instead of only form
 //TODO: preset queries in repositories
 //TODO: make favicon color danger

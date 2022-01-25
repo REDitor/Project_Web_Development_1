@@ -1,7 +1,5 @@
 //region WatchLists
-function displayCreateList() {
-    document.getElementById('createNewListSection').innerHTML = "";
-
+function displayCreateList(userId) {
     const formContainer = document.createElement('section');
     formContainer.className = 'container mb-5';
     formContainer.id = 'formContainer';
@@ -38,11 +36,12 @@ function displayCreateList() {
 
     const createListButton = document.createElement('button');
     createListButton.name = 'createNewList';
+    createListButton.type = 'button';
     createListButton.className = 'btn btn-success btn-sm';
     createListButton.innerText = 'Create';
     createListButton.style.width = '45%';
     createListButton.addEventListener('click', (event) => {
-        createWatchList();
+        createWatchList(userId);
     })
 
     const cancelListButton = document.createElement('button');
@@ -62,14 +61,23 @@ function displayCreateList() {
     createListForm.append(formGroupName, formGroupDescription, formGroupButtons);
     formContainer.append(title, createListForm);
 
-    const createNewListSection = document.getElementById('createNewListSection');
+    const createNewListSection = document.createElement('section');
+    createNewListSection.id = 'createNewListSection';
+    createNewListSection.className = 'mb-3 col-sm-11 col-md-8 col-lg-6 col-xl-4 m-auto my-5 text-center h-50';
     createNewListSection.appendChild(formContainer);
+
+    const myListsContainer = document.getElementById('myLists-container');
+    const tableSection = document.getElementById('tableSection');
+
+    cancelCreateList();
+    myListsContainer.insertBefore(createNewListSection, tableSection);
 }
 
 function cancelCreateList() {
-    const createNewListSecion = document.getElementById('createNewListSection');
-    const formContainer = document.getElementById('formContainer');
-    createNewListSecion.removeChild(formContainer);
+    if (document.body.contains(document.getElementById('createNewListSection'))) {
+        const createNewListSection = document.getElementById('createNewListSection');
+        createNewListSection.remove();
+    }
 }
 
 function displayWatchLists(watchLists) {
@@ -135,12 +143,12 @@ function getWatchListsForUser(userId) {
     fetch(`api/mylists/getListsByUserId/${userId}`)
         .then(res => res.json())
         .then((data) => {
-            displayWatchLists(data);
+            displayWatchLists(data, userId);
         })
         .catch((err) => console.error(err));
 }
 
-function createWatchList() {
+function createWatchList(userId) {
     const listName = document.getElementById('createListName');
     const listDescription = document.getElementById('createListDescription');
 
@@ -160,8 +168,8 @@ function createWatchList() {
         .then(output => {
             listName.value = null;
             listDescription.value = null;
-            const userId = getUserId();
             getWatchListsForUser(userId);
+            cancelCreateList();
         })
         .catch(err => console.error(err));
 }
@@ -180,6 +188,7 @@ async function deleteWatchList(watchListId, watchListName) {
             .catch(err => console.error(err));
     }
 }
+
 //endregion
 
 //region WatchListItems(Movies/Shows)
@@ -188,7 +197,7 @@ function getMoviesForList(watchListId) {
     if (document.body.contains(document.getElementById('moviesTableBody')))
         document.getElementById('moviesTableBody').innerHTML = "";
 
-    fetch (`api/myLists/getMoviesByWatchListId/${watchListId}`)
+    fetch(`api/myLists/getMoviesByWatchListId/${watchListId}`)
         .then(res => res.json())
         .then((data) => {
             displayMovies(data, watchListId);
@@ -200,7 +209,7 @@ function getShowsForList(watchListId) {
     if (document.body.contains(document.getElementById('showsTableBody')))
         document.getElementById('showsTableBody').innerHTML = "";
 
-    fetch (`api/myLists/getShowsByWatchListId/${watchListId}`)
+    fetch(`api/myLists/getShowsByWatchListId/${watchListId}`)
         .then(res => res.json())
         .then((data) => {
             displayShows(data, watchListId);
@@ -209,7 +218,7 @@ function getShowsForList(watchListId) {
 }
 
 function displayMovies(movies, watchListId) {
-    const moviesTableBody = document.getElementById('moviesTableBody');
+
 
     movies.forEach(
         movie => {
@@ -229,19 +238,18 @@ function displayMovies(movies, watchListId) {
             const buttonTd = document.createElement('td');
 
             const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-danger btn-sm py-1';
+            deleteButton.className = 'btn btn-outline-danger btn-sm py-1';
             deleteButton.addEventListener('click', (event) => {
                 void removeFromList(movie.itemId, watchListId);
-                alert(`Successfully removed ${movie.title}`); //change to confirm dialog
+                alert(`Successfully removed ${movie.title} from list`); //change to confirm dialog
             });
 
-            const trashCanIcon = document.createElement('i');
-            trashCanIcon.className = 'fas fa-trash-can';
+            const bookMarkSlash = document.createElement('i');
+            bookMarkSlash.className = 'fas fa-bookmark-slash';
 
-            deleteButton.appendChild(trashCanIcon);
+            deleteButton.appendChild(bookMarkSlash);
             buttonTd.appendChild(deleteButton);
             tr.append(titleTh, writerTd, durationTd, buttonTd);
-            moviesTableBody.appendChild(tr);
         }
     )
 }
@@ -296,8 +304,6 @@ function removeFromList(itemId, watchListId) {
 
 //CRUD
 function addToList(itemId, watchListId) {
-
-
     const data = {
         'watchListId': watchListId,
         'itemId': itemId
@@ -315,4 +321,5 @@ function addToList(itemId, watchListId) {
         })
         .catch(err => console.error(err));
 }
+
 //endregion
