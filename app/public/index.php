@@ -13,19 +13,15 @@ $router->route($uri);
 
 //Rubrics:
 //TODO: forgot password
-//TODO: prevent sql injection
-//TODO: exceptions!?
 
 //Must:
-//FIXME: email password link not working
-//FIXME: confirm reloads page when creating watchLists
 //FIXME: !! On list click show list items (including remove button) (element is null)
+
+//TODO: add shows to list like movies
 
 //Should:
 //TODO: feedback if username incorrect
 
-//FIXME: !! Login card not centered on page
-//FIXME: alert after list creation shows before page update
 //FIXME: find solution for active nav
 //FIXME: User dropdown not aligned correctly
 

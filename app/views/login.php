@@ -31,8 +31,8 @@ if (isset($_POST['login'])) {
 
 <body>
 	<section class="overlay"></section>
-		<section class="container text-center d-flex">
-			<section class="card bg-dark text-white px-5 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+		<section class="d-flex align-items-center w-100 h-100 position-absolute">
+			<section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 mx-auto">
 				<form method="POST">
 					<h1 class="py-4">Login</h1>
 					<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"

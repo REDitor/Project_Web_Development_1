@@ -19,13 +19,13 @@ if (isset($_SESSION['userId'])) {
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse m-auto" id="navBurger">
+			<div class="collapse navbar-collapse ms-md-5 m-auto" id="navBurger">
 				<ul class="navbar-nav m-auto">
 					<li class="nav-item"><a class="nav-link h6" href="home">Home</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>
+<!--					<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>-->
+<!--					<li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>-->
 				</ul>
 				<ul class="navbar-nav">
 					<?php

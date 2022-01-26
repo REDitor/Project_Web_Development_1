@@ -39,7 +39,6 @@ if (!isset($_SESSION['userId'])) {
 						<a class="text-decoration-none text-danger" href="home">Home</a>
 					</li>
 					<li class="breadcrumb-item active">My Lists</li>
-					<li id="specificList"></li>
 				</ol>
 				<section class="d-flex justify-content-between">
 					<h2>My Lists</h2>

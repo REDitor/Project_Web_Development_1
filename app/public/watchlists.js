@@ -83,16 +83,17 @@ function cancelCreateList() {
 function displayWatchLists(watchLists) {
     const watchListsTableBody = document.getElementById('watchListsTableBody');
 
+    let rowNumber = 0;
+
     watchLists.forEach(
         watchList => {
             const tr = document.createElement('tr');
-            tr.id = 'watchListRow';
-            tr.style.padding = '5rem';
+            tr.id = `watchListRow-${rowNumber}`;
 
             const nameTh = document.createElement('th');
             nameTh.innerHTML = watchList.name;
             nameTh.addEventListener('click', (event) => {
-                displayListDetails(watchList.watchListId);
+                displayListDetails(watchList.watchListId, rowNumber);
             })
 
             const descriptionTd = document.createElement('td');
@@ -101,7 +102,7 @@ function displayWatchLists(watchLists) {
             const buttonTd = document.createElement('td');
 
             const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-danger btn-sm py-1';
+            deleteButton.className = 'btn btn-danger d-flex px-2 py-2 mx-auto';
             deleteButton.addEventListener('click', (event) => {
                 void deleteWatchList(watchList.watchListId, watchList.name);
             });
@@ -113,14 +114,14 @@ function displayWatchLists(watchLists) {
             buttonTd.appendChild(deleteButton);
             tr.append(nameTh, descriptionTd, buttonTd);
             watchListsTableBody.appendChild(tr);
+
+            rowNumber++;
         }
     )
 }
 
-function displayListDetails(watchListId) {
-    getMoviesForList(watchListId);
-
-
+function displayListDetails(watchListId, rowNumber) {
+    // getMoviesForList(watchListId);
     // getShowsForList(watchListId);
     // displayMovies(watchListId);
     // displayShows(watchListId);
