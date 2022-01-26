@@ -1,3 +1,10 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	$watchListName = $_GET['name'];
+	$watchListId = $_GET['id'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="mylists.css">
 </head>
 
-<body class="bg-white text-dark"">
+<body class="bg-white text-dark" onload="getMoviesForList(<?php echo $watchListId ?>); getShowsForList(<?php echo $watchListId ?>);">
 
     <script src="watchlists.js"></script>
 
@@ -27,27 +34,28 @@
 
     <section id="page-container">
         <section id="movie-container">
-            <section id="myLists-container" class="container">
+            <section class="container">
                 <ol class="breadcrumb pt-2">
                     <li class="breadcrumb-item">
                         <a class="text-decoration-none text-danger" href="home">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a class="text-decoration-none text-danger" href="myLists"></a>
+                        <a class="text-decoration-none text-danger" href="myLists">My Lists</a>
                     </li>
-                    <li class="breadcrumb-item active">{ListName}}</li>
+                    <li class="breadcrumb-item active"><?php echo $watchListName ?></li>
                 </ol>
-                <section class="d-flex justify-content-between">
-                    <h2>{ListName}}</h2>
+                <section class="d-flex justify-content-between pt-3">
+                    <h2><?php echo $watchListName ?></h2>
                 </section>
 
                 <section id="detailsTableSection" class="pb-5">
                     <table id="detailsTable" class="table table-hover">
                         <thead class="table-dark">
                             <tr>
+	                            <th id="iconTd"></th>
                                 <th>Title</th>
-                                <th>Writer/Director</th>
-                                <th>Duration (min.)</th>
+                                <th id="writerTd">Writer</th>
+                                <th>Duration</th>
                                 <th>Episodes</th>
                                 <th></th>
                             </tr>

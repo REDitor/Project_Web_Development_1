@@ -40,7 +40,7 @@ if (!isset($_SESSION['userId'])) {
 					</li>
 					<li class="breadcrumb-item active">My Lists</li>
 				</ol>
-				<section class="d-flex justify-content-between">
+				<section class="d-flex justify-content-between pt-3">
 					<h2>My Lists</h2>
 					<button onclick="displayCreateList(<?php echo $_SESSION['userId']; ?>);" class="btn btn-success btn-sm h-50"> + New List</button>
 				</section>

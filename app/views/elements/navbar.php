@@ -24,8 +24,6 @@ if (isset($_SESSION['userId'])) {
 					<li class="nav-item"><a class="nav-link h6" href="home">Home</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
 					<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
-<!--					<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>-->
-<!--					<li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>-->
 				</ul>
 				<ul class="navbar-nav">
 					<?php

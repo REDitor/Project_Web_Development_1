@@ -10,4 +10,9 @@ class ShowsService
         $repository = new ShowsRepository();
         return $repository->getAll();
     }
+
+    public function getShowsByWatchListId($watchListId) {
+        $repository = new ShowsRepository();
+        return $repository->getByWatchListId($watchListId);
+    }
 }
