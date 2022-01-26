@@ -20,18 +20,18 @@ if (isset($_POST['sendEmailLink'])) {
 </head>
 
 <body>
-	<script src="/login.js"></script>
+	<script src="user.js"></script>
 
     <section class="overlay"></section>
-    <section class="container text-center d-flex align-items-center justify-content-center">
-        <section class="card bg-dark text-white px-5 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+    <section class="d-flex align-items-center w-100 h-100 position-absolute">
+        <section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-8 col-md-7 col-lg-5 col-xl-3 mx-auto">
             <form method="POST">
                 <h1 class="py-4">Forgot Password</h1>
-	            <p class="py-2">Enter your email. If it matches an account in our system, a password reset link will be sent to you.</p>
+	            <p class="py-2">Enter your email. If it matches an account in our system, we will redirect you to the password reset page.</p>
                 <input type="email" name="emailPassReset" placeholder="Enter email" id="emailPassReset"
                        class="form-control mb-3">
-	            <button type="button" onclick="sendPassResetEmail(emailPassReset.value);" name="sendEmailLink" class="col-12 btn btn-danger btn-block">Send Link</button>
-	            <p id="feedbackMessage" cla></p>
+	            <button type="button" onclick="requestPasswordReset(emailPassReset.value)" name="sendEmailLink" class="col-12 btn btn-danger btn-block">Request</button>
+	            <p class="pt-4"><small id="feedbackMessageFp"></small></p>
 	            <p class="mt-4"><a class="text-decoration-none text-danger"
 	                               href="login">Back to Login</a></p>
             </form>

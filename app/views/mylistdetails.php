@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <link rel="stylesheet" type="text/css" href="mylists.css">
 </head>
 
-<body class="bg-white text-dark" onload="getMoviesForList(<?php echo $watchListId ?>); getShowsForList(<?php echo $watchListId ?>);">
+<body class="bg-white text-dark" onload="getMoviesForList('<?php echo $watchListId ?>', '<?php echo $watchListName ?>'); getShowsForList('<?php echo $watchListId ?>', '<?php echo $watchListName ?>');">
 
     <script src="watchlists.js"></script>
 

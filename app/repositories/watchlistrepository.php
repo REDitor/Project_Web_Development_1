@@ -82,4 +82,18 @@ class WatchListRepository extends Repository
             echo $pdoe;
         }
     }
+
+    public function removeFromList($itemId, $watchListId) {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM watchlist_item_junction
+                                                WHERE itemId = :itemId
+                                                AND watchListId = :watchListId");
+
+            $stmt->bindParam(':itemId', $itemId);
+            $stmt->bindParam(':watchListId', $watchListId);
+            $stmt->execute();
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
 }

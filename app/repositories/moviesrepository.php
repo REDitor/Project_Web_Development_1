@@ -24,7 +24,7 @@ class MoviesRepository extends Repository
 
     public function getByWatchListId($watchListId) {
         try {
-            $stmt = $this->connection->prepare("SELECT items.title, items.writer, movies.durationInMinutes
+            $stmt = $this->connection->prepare("SELECT items.itemId, items.title, items.writer, movies.durationInMinutes
                                                 FROM items
                                                 INNER JOIN movies ON items.itemId = movies.itemId
                                                 INNER JOIN watchlist_item_junction ON items.itemId = watchlist_item_junction.itemId

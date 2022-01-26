@@ -58,4 +58,22 @@ class MyListsController
     public function getShowsByWatchListId($watchListId) {
         echo json_encode($this->shows_service->getShowsByWatchListId($watchListId));
     }
+
+    public function addToList() {
+        $json = file_get_contents('php://input');
+        $object = json_decode($json);
+
+        $itemId = $object->itemId;
+        $watchListId = $object->watchListId;
+        $this->watchList_service->addToList($itemId, $watchListId);
+    }
+
+    public function removeFromList() {
+        $json = file_get_contents('php://input');
+        $object = json_decode($json);
+
+        $itemId = $object->itemId;
+        $watchListId = $object->watchListId;
+        $this->watchList_service->removeFromList($itemId, $watchListId);
+    }
 }

@@ -24,7 +24,7 @@ class PatternRouter
 
         $defaultController = 'home';
         $defaultMethod = 'index';
-        $defaultParams = null;
+        $defaultParam = null;
 
         //ignore params
         $uri = $this->stripParams($uri);
@@ -44,14 +44,8 @@ class PatternRouter
 
         //set parameter names
         if (!isset($explodedUri[2]) || empty($explodedUri[2]))
-            $explodedUri[2] = $defaultParams;
-        $params = $explodedUri[2];
-
-        if (!isset($explodedUri[3]) || empty($explodedUri[3]))
-            $explodedUri[3] = $defaultParams;
-        else
-            $params = $params . ', ' . $explodedUri[3];
-
+            $explodedUri[2] = $defaultParam;
+        $param = $explodedUri[2];
 
         //set controller directory
         $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
@@ -67,7 +61,7 @@ class PatternRouter
 
         try {
             $controllerObject = new $controllerName;
-            $controllerObject->{$methodName}($params);
+            $controllerObject->{$methodName}($param);
         } catch (Exception $e) {
             http_response_code(404);
             die();

@@ -1,9 +1,16 @@
 <?php
 namespace models;
 
-class Show extends Item
+use JsonSerializable;
+
+class Show extends Item implements JsonSerializable
 {
     private int $numberOfEpisodes;
+
+    public function jsonSerialize(): array
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * @return int

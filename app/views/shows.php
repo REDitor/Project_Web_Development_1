@@ -61,6 +61,15 @@ use services\WatchListService;
 												<?php echo $show->getNumberOfEpisodes(); ?> episodes</small>
 										</p>
 									</section>
+									<?php
+									if (!isset($_SESSION['userId'])) {
+									?>
+									<a href="login" class="btn btn-danger float-end" type="button">
+										<i class="fa-regular fa-bookmark"></i>
+									</a>
+									<?php
+									} else {
+									?>
 									<div class="dropdown">
 										<button class="btn btn-danger float-end" type="button" data-toggle="dropdown">
 											<i class="fa-regular fa-bookmark"></i>
@@ -78,6 +87,9 @@ use services\WatchListService;
 											?>
 										</div>
 									</div>
+									<?php
+									}
+									?>
 								</section>
 							</section>
 						</section>

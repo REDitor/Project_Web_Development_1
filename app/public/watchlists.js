@@ -182,6 +182,8 @@ async function deleteWatchList(watchListId, watchListName) {
     if (confirm(`Are you sure you want to delete ${watchListName}?`)) {
         const userId = await getUserId();
 
+        console.log(watchListId);
+
         const url = `api/myLists/deleteWatchlist/${watchListId}`
         fetch(url, {
             method: 'DELETE',
@@ -196,32 +198,31 @@ async function deleteWatchList(watchListId, watchListName) {
 //endregion
 
 //region WatchListItems(Movies/Shows)
-function getMoviesForList(watchListId) {
-
-    if (document.body.contains(document.getElementById('moviesTableBody')))
-        document.getElementById('moviesTableBody').innerHTML = "";
+function getMoviesForList(watchListId, watchListName) {
+    if (document.body.contains(document.getElementById('detailsTableBody')))
+        document.getElementById('detailsTableBody').innerHTML = "";
 
     fetch(`api/myLists/getMoviesByWatchListId/${watchListId}`)
         .then(res => res.json())
         .then((data) => {
-            displayMovies(data, watchListId);
+            displayMovies(data, watchListId, watchListName);
         })
         .catch((err) => console.error(err));
 }
 
-function getShowsForList(watchListId) {
-    if (document.body.contains(document.getElementById('showsTableBody')))
-        document.getElementById('showsTableBody').innerHTML = "";
+function getShowsForList(watchListId, watchListName) {
+    if (document.body.contains(document.getElementById('detailsTableBody')))
+        document.getElementById('detailsTableBody').innerHTML = "";
 
     fetch(`api/myLists/getShowsByWatchListId/${watchListId}`)
         .then(res => res.json())
         .then((data) => {
-            displayShows(data, watchListId);
+            displayShows(data, watchListId, watchListName);
         })
         .catch((err) => console.error(err));
 }
 
-function displayMovies(movies, watchListId) {
+function displayMovies(movies, watchListId, watchListName) {
     const detailsTableBody = document.getElementById('detailsTableBody');
 
     console.log(movies);
@@ -242,7 +243,7 @@ function displayMovies(movies, watchListId) {
             writerTd.innerHTML = movie.writer;
 
             const durationTd = document.createElement('td');
-            durationTd.innerHTML = movie.durationInMinutes;
+            durationTd.innerHTML = `${movie.durationInMinutes} min.`;
 
             const episodesTd = document.createElement('td');
 
@@ -251,7 +252,7 @@ function displayMovies(movies, watchListId) {
             const deleteButton = document.createElement('button');
             deleteButton.className = 'btn btn-danger d-flex px-2 py-2 mx-auto';
             deleteButton.addEventListener('click', (event) => {
-                void removeFromList(movie.itemId, watchListId);
+                removeFromList(movie.itemId, watchListId, movie.title, watchListName);
                 //TODO: confirm dialog
             });
 
@@ -267,7 +268,7 @@ function displayMovies(movies, watchListId) {
     )
 }
 
-function displayShows(shows, watchListId) {
+function displayShows(shows, watchListId, watchListName) {
     const detailsTableBody = document.getElementById('detailsTableBody');
 
     shows.forEach(
@@ -291,14 +292,14 @@ function displayShows(shows, watchListId) {
             const durationTd = document.createElement('td');
 
             const episodesTd = document.createElement('td');
-            episodesTd.innerHTML = show.numberOfEpisodes;
+            episodesTd.innerHTML = `${show.numberOfEpisodes}`;
 
             const buttonTd = document.createElement('td');
 
             const deleteButton = document.createElement('button');
             deleteButton.className = 'btn btn-danger d-flex px-2 py-2 mx-auto';
             deleteButton.addEventListener('click', (event) => {
-                void removeFromList(show.itemId, watchListId);
+                removeFromList(show.itemId, watchListId, show.title, watchListName);
                 //confirm dialog
             });
 
@@ -308,30 +309,19 @@ function displayShows(shows, watchListId) {
             typeTd.appendChild(showIcon);
             deleteButton.appendChild(trashCanIcon);
             buttonTd.appendChild(deleteButton);
-            tr.append(typeTd, titleTh, writerTd,durationTd, episodesTd, buttonTd);
+            tr.append(typeTd, titleTh, writerTd, durationTd, episodesTd, buttonTd);
             detailsTableBody.appendChild(tr);
         }
     )
 }
 
-function removeFromList(itemId, watchListId) {
-
-}
-
-
-//endregion
-
-//region Movies
-
-
-//CRUD
 function addToList(itemId, watchListId) {
     const data = {
         'watchListId': watchListId,
         'itemId': itemId
     }
 
-    fetch('api/movies/addToList', {
+    fetch('api/mylists/addToList', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -342,6 +332,30 @@ function addToList(itemId, watchListId) {
             alert(`Successfully added to list`);
         })
         .catch(err => console.error(err));
+}
+
+function removeFromList(itemId, watchListId, itemTitle, watchListName) {
+    if (confirm(`Are you sure you want to remove ${itemTitle} from ${watchListName}?`)) {
+        const url = 'api/myLists/removeFromList';
+
+        const data = {
+            'watchListId': watchListId,
+            'itemId': itemId
+        }
+
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+            .then(output => {
+                getMoviesForList(watchListId);
+                getShowsForList(watchListId);
+            })
+            .catch(err => console.log(err));
+    }
 }
 
 //endregion

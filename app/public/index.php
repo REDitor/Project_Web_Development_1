@@ -11,7 +11,7 @@ $uri = trim($_SERVER['REQUEST_URI'], '/');
 $router = new PatternRouter();
 $router->route($uri);
 
-//Rubrics:
+//region TODO
 //TODO: forgot password
 
 //Must:
@@ -32,3 +32,4 @@ $router->route($uri);
 //TODO: merge listDetails items together with empty columns for empty data
 //TODO: preset queries in repositories
 //TODO: make favicon color danger
+//endregion

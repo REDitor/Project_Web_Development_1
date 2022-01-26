@@ -35,4 +35,10 @@ class WatchListService
         $repository = new WatchListRepository();
         $repository->addToList($itemId, $watchListId);
     }
+
+    public function removeFromList($itemId, $watchListId) {
+        echo $itemId . 'and' . $watchListId;
+        $repository = new WatchListRepository();
+        $repository->removeFromList($itemId, $watchListId);
+    }
 }

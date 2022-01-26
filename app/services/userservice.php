@@ -34,4 +34,9 @@ class UserService
         $repository = new UserRepository();
         return $repository->getEmail($email);
     }
+
+    public function updatePassword($password, $email) {
+        $repository = new UserRepository();
+        $repository->updatePassword($password, $email);
+    }
 }

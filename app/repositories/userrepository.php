@@ -62,4 +62,18 @@ class UserRepository extends Repository
             echo $pdoe;
         }
     }
+
+    function updatePassword($password, $email) {
+        try {
+            $stmt = $this->connection->prepare("UPDATE users
+                                               SET password = :password
+                                               WHERE email = :email");
+
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+        } catch (PDOException $pdoe) {
+            echo $pdoe;
+        }
+    }
 }

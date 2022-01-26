@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
 <body>
 	<section class="overlay"></section>
 		<section class="d-flex align-items-center w-100 h-100 position-absolute">
-			<section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 mx-auto">
+			<section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-8 col-md-7 col-lg-5 col-xl-3 mx-auto">
 				<form method="POST">
 					<h1 class="py-4">Login</h1>
 					<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"
@@ -41,7 +41,7 @@ if (isset($_POST['login'])) {
 					       class="form-control mb-3">
 					<button name="login" class="col-12 btn btn-danger btn-block">Login</button>
 					<p class="mt-4"><a class="text-decoration-none text-danger"
-					                   href="login/forgotPassword">Forgot password?</a></p>
+					                   href="forgotpassword">Forgot password?</a></p>
 					<p class="mt-4"><small>New to Curtains? <a class="text-decoration-none text-danger"
 					                                           href="home#registration">Create an account</a></small>
 					</p>
