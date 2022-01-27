@@ -12,10 +12,9 @@ $router = new PatternRouter();
 $router->route($uri);
 
 //region TODO
-//Should:
-//TODO: feedback if username incorrect (login has to be implemented through javascript in that case, to be able to reuse the user.js code)
+//Must:
+//TODO: export updated database to project
 
 //Want:
-//TODO: find solution for active nav
-//TODO: message when adding to list showing listname and itemname
+//TODO: feedback if username incorrect (login has to be implemented through javascript in that case, to be able to reuse the user.js code)
 //endregion
