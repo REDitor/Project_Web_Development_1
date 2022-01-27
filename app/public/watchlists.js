@@ -100,12 +100,14 @@ function displayWatchLists(watchLists) {
 
                 const nameTh = document.createElement('th');
                 nameTh.innerHTML = watchList.name;
+                nameTh.style.cursor = 'pointer';
                 nameTh.addEventListener('click', (event) => {
                     window.location.href = `mylistdetails?name=${watchList.name}&id=${watchList.watchListId}`;
                 })
 
                 const descriptionTd = document.createElement('td');
                 descriptionTd.innerHTML = watchList.description;
+                descriptionTd.style.cursor = 'pointer';
                 descriptionTd.addEventListener('click', (event) => {
                     window.location.href = `mylistdetails?name=${watchList.name}&id=${watchList.watchListId}`;
                 })
@@ -182,8 +184,6 @@ async function deleteWatchList(watchListId, watchListName) {
     if (confirm(`Are you sure you want to delete ${watchListName}?`)) {
         const userId = await getUserId();
 
-        console.log(watchListId);
-
         const url = `api/myLists/deleteWatchlist/${watchListId}`
         fetch(url, {
             method: 'DELETE',
@@ -225,7 +225,6 @@ function getShowsForList(watchListId, watchListName) {
 function displayMovies(movies, watchListId, watchListName) {
     const detailsTableBody = document.getElementById('detailsTableBody');
 
-    console.log(movies);
     movies.forEach(
         movie => {
             const tr = document.createElement('tr');
@@ -253,7 +252,6 @@ function displayMovies(movies, watchListId, watchListName) {
             deleteButton.className = 'btn btn-danger d-flex px-2 py-2 mx-auto';
             deleteButton.addEventListener('click', (event) => {
                 removeFromList(movie.itemId, watchListId, movie.title, watchListName);
-                //TODO: confirm dialog
             });
 
             const trashCanIcon = document.createElement('i');

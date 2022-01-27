@@ -80,7 +80,7 @@ use services\WatchListService;
 											$watchList_service = new WatchListService();
 											foreach ($watchList_service->getListsByUserId($_SESSION['userId']) as $watchList) {
 												?>
-												<a onclick="addToList(<?php echo $show->getItemId(); ?>, <?php echo $watchList->getWatchListId(); ?>);"
+												<a style="cursor: pointer" onclick="addToList(<?php echo $show->getItemId(); ?>, <?php echo $watchList->getWatchListId(); ?>);"
 												   class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
 												<?php
 											}

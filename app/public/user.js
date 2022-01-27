@@ -1,12 +1,41 @@
 function showFeedbackMessage(message, textColor, elementId) {
-    const feedbackMessage = document.getElementById(elementId);
-    feedbackMessage.innerHTML = "";
-    feedbackMessage.style.display = 'block';
-    feedbackMessage.innerHTML = message;
+        const feedbackMessage = document.getElementById(elementId);
+        feedbackMessage.innerHTML = "";
+        feedbackMessage.style.display = 'block';
+        feedbackMessage.className = `text-${textColor}`;
+        feedbackMessage.innerHTML = message;
 
-    setTimeout(function() {
-        feedbackMessage.style.display = 'none';
-    }, 5000);
+        setTimeout(function () {
+            feedbackMessage.style.display = 'none';
+        }, 5000);
+}
+
+function removeInputFields() {
+    const passInput = document.getElementById('passInput');
+    const confPassInput = document.getElementById('confPassInput');
+    const resetButton = document.getElementById('resetButton');
+    passInput.remove();
+    confPassInput.remove();
+    resetButton.remove();
+}
+
+function addLoginLink() {
+    const form = document.getElementById('resetPassForm');
+
+    const p = document.createElement('p');
+    p.className = 'mt-4';
+
+    const small = document.createElement('small');
+
+    const a = document.createElement('a');
+    a.className = 'text-decoration-none btn btn-danger';
+    a.href = 'login';
+    a.innerHTML = 'Login';
+    a.type = 'button';
+
+    small.appendChild(a);
+    p.appendChild(small);
+    form.appendChild(p);
 }
 
 function requestPasswordReset(email) {
@@ -23,29 +52,32 @@ function requestPasswordReset(email) {
 }
 
 function resetPassword(password, passConfirm, email) {
-    const elementId = "feedBackMessageRp";
+    if (password.length > 0 && passConfirm.length > 0) {
+        if (password === passConfirm) {
+            const data = {
+                'password': password,
+                'email': email
+            }
 
-    if (password === passConfirm) {
-        const data = {
-            'password': CryptoJS.MD5(password),
-            'email': email
-        }
-
-        fetch(`resetpassword/updatePassword`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then(output => {
-                const loginLink = document.getElementById('loginLink');
-                showFeedbackMessage("Successfully updated your password.", "success", elementId)
-                loginLink.innerHTML = 'Login';
+            fetch(`resetpassword/updatePassword`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
             })
-            .catch(err => console.error(err));
+                .then(output => {
+                    document.getElementById('formTitle').innerHTML = "Success";
+                    showFeedbackMessage("Successfully updated your password.", "success", "feedbackMessageRp")
+                    removeInputFields();
+                    addLoginLink();
+                })
+                .catch(err => console.error(err));
 
+        } else {
+            showFeedbackMessage("Passwords do not match.", "warning", "feedbackMessageRp");
+        }
     } else {
-        showFeedbackMessage("Passwords do not match.", "warning", elementId);
+        showFeedbackMessage("Please enter all fields.", "warning", "feedbackMessageRp");
     }
 }

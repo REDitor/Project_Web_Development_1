@@ -25,18 +25,15 @@ class UserService
 
     public function insertUser($user)
     {
-        $repository = new UserRepository();
-        $repository->insertUser($user);
+        $this->user_repository->insertUser($user);
     }
 
     public function getEmail($email)
     {
-        $repository = new UserRepository();
-        return $repository->getEmail($email);
+        return $this->user_repository->getEmail($email);
     }
 
     public function updatePassword($password, $email) {
-        $repository = new UserRepository();
-        $repository->updatePassword($password, $email);
+        $this->user_repository->updatePassword($password, $email);
     }
 }

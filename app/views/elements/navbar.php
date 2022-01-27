@@ -7,6 +7,8 @@ if (isset($_SESSION['userId'])) {
 }
 ?>
 
+<script src="nav.js"></script>
+
 <section id="navbar" class="navbar navbar-expand-xs navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<a href="home" class="text-decoration-none d-inline-block">
 		<h1 class="logo ms-4 mt-2">
@@ -14,6 +16,9 @@ if (isset($_SESSION['userId'])) {
 				class="text-white">tains</span>
 		</h1>
 	</a>
+
+
+
 	<nav>
 		<section class="container">
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
@@ -21,10 +26,11 @@ if (isset($_SESSION['userId'])) {
 			</button>
 			<div class="collapse navbar-collapse ms-md-5 m-auto" id="navBurger">
 				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a class="nav-link h6" href="home">Home</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
+					<li class="nav-item"><a id="homeNav" class="nav-link h6" href="home">Home</a></li>
+					<li class="nav-item"><a id="moviesNav" class="nav-link h6" href="movies">Movies</a></li>
+					<li class="nav-item"><a id="showsNav" class="nav-link h6" href="shows">Shows</a></li>
 				</ul>
+				<script type="text/javascript">setActiveNav();</script>
 				<ul class="navbar-nav">
 					<?php
 					if (!isset($userId)) {

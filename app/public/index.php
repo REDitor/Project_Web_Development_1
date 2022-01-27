@@ -12,24 +12,10 @@ $router = new PatternRouter();
 $router->route($uri);
 
 //region TODO
-//TODO: forgot password
-
-//Must:
-//FIXME: !! On list click show list items (including remove button) (element is null)
-
-//TODO: add shows to list like movies
-
 //Should:
-//TODO: feedback if username incorrect
-
-//FIXME: find solution for active nav
-//FIXME: User dropdown not aligned correctly
-
-//TODO: set repository as construct value in service
-//TODO: fix footer spacing
+//TODO: feedback if username incorrect (login has to be implemented through javascript in that case, to be able to reuse the user.js code)
 
 //Want:
-//TODO: merge listDetails items together with empty columns for empty data
-//TODO: preset queries in repositories
-//TODO: make favicon color danger
+//TODO: find solution for active nav
+//TODO: message when adding to list showing listname and itemname
 //endregion

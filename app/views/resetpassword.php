@@ -24,17 +24,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	<section class="overlay"></section>
 	<section class="d-flex align-items-center w-100 h-100 position-absolute">
 		<section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-8 col-md-7 col-lg-5 col-xl-3 mx-auto">
-			<form method="POST">
-				<h1 class="pt-4">Reset Password</h1>
-				<h6 class="py-3"><?php echo $email ?></h6>
-				<input type="password" name="resetPasswordInput" placeholder="Enter password" class="form-control mb-3">
-				<input type="password" name="resetPassConfirmInput" placeholder="Confirm password" class="form-control mb-3">
-				<button onclick="resetPassword(resetPasswordInput.value, resetPasswordInput.value, <?php echo $email ?>) " name="resetPassword" class="col-12 btn btn-danger btn-block mb-4">Reset Password</button>
+			<form id="resetPassForm" method="POST">
+				<h1 id="formTitle" class="pt-4">Reset Password</h1>
+				<h6 class="py-3"><?php echo $_GET['email'] ?></h6>
+				<input id="passInput" type="password" name="resetPasswordInput" placeholder="Enter password"
+				       class="form-control mb-3">
+				<input id="confPassInput" type="password" name="resetPassConfirmInput" placeholder="Confirm password"
+				       class="form-control mb-3">
+				<button id="resetButton" type="submit"
+				        class="col-12 btn btn-danger btn-block mb-4">Reset Password
+				</button>
 				<p class="pt-4"><small id="feedbackMessageRp"></small></p>
-				<p class="mt-4"><small><a id="loginLink" class="text-decoration-none text-danger" href="login"></a></small></p>
 			</form>
 		</section>
 	</section>
+
+	<?php
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$passwordInput = md5($_POST['resetPasswordInput']);
+		$passConfirmInput = md5($_POST['resetPassConfirmInput']);
+		?>
+		<script
+			type="text/javascript">resetPassword('<?php echo $passwordInput ?>', '<?php echo $passConfirmInput ?>', '<?php echo $_GET['email'] ?>')
+		</script>
+		<?php
+	}
+	?>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
