@@ -2,6 +2,7 @@
 
 ## The Project
 #### URL: [Curtains](https://curtains-inholland.herokuapp.com/)
+(Database query is included in the project and runs on first docker-compose)
 
 #### Login Details:
 ```
