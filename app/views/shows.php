@@ -21,6 +21,9 @@ use services\WatchListService;
 </head>
 
 <body class="bg-white text-dark">
+
+	<script src="watchlists.js"></script>
+
 	<header id="hero" class="hero">
 		<?php
 		include __DIR__ . '/elements/navbar.php';
@@ -58,6 +61,15 @@ use services\WatchListService;
 												<?php echo $show->getNumberOfEpisodes(); ?> episodes</small>
 										</p>
 									</section>
+									<?php
+									if (!isset($_SESSION['userId'])) {
+									?>
+									<a href="login" class="btn btn-danger float-end" type="button">
+										<i class="fa-regular fa-bookmark"></i>
+									</a>
+									<?php
+									} else {
+									?>
 									<div class="dropdown">
 										<button class="btn btn-danger float-end" type="button" data-toggle="dropdown">
 											<i class="fa-regular fa-bookmark"></i>
@@ -68,12 +80,16 @@ use services\WatchListService;
 											$watchList_service = new WatchListService();
 											foreach ($watchList_service->getListsByUserId($_SESSION['userId']) as $watchList) {
 												?>
-												<a class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
+												<a style="cursor: pointer" onclick="addToList(<?php echo $show->getItemId(); ?>, <?php echo $watchList->getWatchListId(); ?>);"
+												   class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
 												<?php
 											}
 											?>
 										</div>
 									</div>
+									<?php
+									}
+									?>
 								</section>
 							</section>
 						</section>

@@ -5,7 +5,7 @@ use app\Database;
 
 class Repository
 {
-    protected $connection;
+    protected Database $connection;
 
     function __construct()
     {

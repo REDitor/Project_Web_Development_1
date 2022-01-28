@@ -33,20 +33,20 @@ if (!isset($_SESSION['userId'])) {
 
 	<section id="page-container">
 		<section id="movie-container">
-			<section class="container">
+			<section id="myLists-container" class="container">
 				<ol class="breadcrumb pt-2">
 					<li class="breadcrumb-item">
 						<a class="text-decoration-none text-danger" href="home">Home</a>
 					</li>
 					<li class="breadcrumb-item active">My Lists</li>
 				</ol>
-				<section class="d-flex justify-content-between">
+				<section class="d-flex justify-content-between pt-3">
 					<h2>My Lists</h2>
-					<button onclick="displayCreateList();" class="btn btn-success btn-sm h-50"> + New List</button>
+					<button onclick="displayCreateList(<?php echo $_SESSION['userId']; ?>);" class="btn btn-success btn-sm h-50"> + New List</button>
 				</section>
-				<section id="createNewListSection" class="mb-3 col-sm-11 col-md-8 col-lg-6 col-xl-4 m-auto my-5 text-center"></section>
-				<section class="pb-5">
-					<table class="table table-hover">
+
+				<section id="tableSection" class="pb-5">
+					<table id="watchListTable" class="table table-hover">
 						<thead class="table-dark">
 							<tr>
 								<th>Name</th>

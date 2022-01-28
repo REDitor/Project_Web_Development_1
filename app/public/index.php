@@ -1,6 +1,6 @@
 <?php
-//header("Access-Control-Allow-Origin: *");
-//header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 use app\PatternRouter;
 
@@ -11,22 +11,10 @@ $uri = trim($_SERVER['REQUEST_URI'], '/');
 $router = new PatternRouter();
 $router->route($uri);
 
+//region TODO
 //Must:
-//FIXME: confirm reloads page when creating watchLists
-
-//TODO: !! On list click show list items (including remove button)
-//TODO: !! use javascript to CRUD?
-//TODO: !! Implement functionality for cancel button (creating lists)
-
-//Should:
-//TODO: !! use API to load movies and shows
-
-//FIXME: alert after list creation shows before page update
-//FIXME: find solution for active nav
-//FIXME: User dropdown not aligned correctly
-
-//TODO: set repository as construct value in service
+//TODO: export updated database to project
 
 //Want:
-//TODO: preset queries in repositories
-//TODO: make favicon color danger
+//TODO: feedback if username incorrect (login has to be implemented through javascript in that case, to be able to reuse the user.js code)
+//endregion

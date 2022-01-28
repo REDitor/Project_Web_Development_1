@@ -1,6 +1,7 @@
 <?php
 
 use services\MovieService;
+use services\WatchListService;
 
 include 'autoload.php';
 
@@ -13,7 +14,6 @@ class MoviesController {
     }
 
     public function index() {
-        //TODO: change echo to return
         echo json_encode($this->movie_Service->getAll());
     }
 }

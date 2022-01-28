@@ -1,9 +1,16 @@
 <?php
 namespace models;
 
-class Movie extends Item
+use JsonSerializable;
+
+class Movie extends Item implements JsonSerializable
 {
     private int $durationInMinutes;
+
+    public function jsonSerialize(): array
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * @return int

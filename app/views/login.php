@@ -24,15 +24,15 @@ if (isset($_POST['login'])) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="/app/public/img/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/img/favicon/favicon.svg" />
 	<link rel="stylesheet" type="text/css" href="login.css">
 	<title>Curtains | Login</title>
 </head>
 
 <body>
 	<section class="overlay"></section>
-		<section class="container text-center d-flex align-items-center justify-content-center">
-			<section class="card bg-dark text-white px-5 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+		<section class="d-flex align-items-center w-100 h-100 position-absolute">
+			<section class="card bg-dark text-white text-center px-5 col-xs-12 col-sm-8 col-md-7 col-lg-5 col-xl-3 mx-auto">
 				<form method="POST">
 					<h1 class="py-4">Login</h1>
 					<input type="text" name="usernameLogin" placeholder="Enter username" id="usernameLogin"
@@ -41,7 +41,7 @@ if (isset($_POST['login'])) {
 					       class="form-control mb-3">
 					<button name="login" class="col-12 btn btn-danger btn-block">Login</button>
 					<p class="mt-4"><a class="text-decoration-none text-danger"
-					                   href="#">Forgot password?</a></p>
+					                   href="forgotpassword">Forgot password?</a></p>
 					<p class="mt-4"><small>New to Curtains? <a class="text-decoration-none text-danger"
 					                                           href="home#registration">Create an account</a></small>
 					</p>

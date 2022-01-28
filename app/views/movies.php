@@ -30,6 +30,9 @@ if (isset($_POST['addToList'])) {
 </head>
 
 <body class="bg-white text-dark">
+
+	<script src="watchlists.js"></script>
+
 	<header id="hero" class="hero">
 		<?php
 		include __DIR__ . '/elements/navbar.php';
@@ -81,13 +84,15 @@ if (isset($_POST['addToList'])) {
 											        data-toggle="dropdown">
 												<i class="fa-regular fa-bookmark"></i>
 											</button>
-											<div class="dropdown-menu dropdown-start px-2">
+											<div class="dropdown-menu px-2" style="right: 0; left: auto">
 												<p><strong>Add to List:</strong></p>
 												<?php
 												$watchList_service = new WatchListService();
 												foreach ($watchList_service->getListsByUserId($_SESSION['userId']) as $watchList) {
 													?>
-													<a class="dropdown-item py-0"><?php echo $watchList->getName(); ?></a>
+													<a style="cursor: pointer" onclick="addToList(<?php echo $movie->getItemId(); ?>, <?php echo $watchList->getWatchListId(); ?>);"
+													   class="dropdown-item py-0"><?php echo $watchList->getName(); ?>
+													</a>
 													<?php
 												}
 												?>

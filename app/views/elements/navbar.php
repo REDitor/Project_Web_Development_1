@@ -7,26 +7,30 @@ if (isset($_SESSION['userId'])) {
 }
 ?>
 
+<script src="nav.js"></script>
+
 <section id="navbar" class="navbar navbar-expand-xs navbar-expand-sm navbar-dark bg-dark fixed-top">
-	<a href="" class="text-decoration-none d-inline-block">
+	<a href="home" class="text-decoration-none d-inline-block">
 		<h1 class="logo ms-4 mt-2">
 			<span class="text-danger"><i class="fas fa-video"></i> Cur</span><span
 				class="text-white">tains</span>
 		</h1>
 	</a>
+
+
+
 	<nav>
 		<section class="container">
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navBurger">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse m-auto" id="navBurger">
+			<div class="collapse navbar-collapse ms-md-5 m-auto" id="navBurger">
 				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a class="nav-link h6" href="home">Home</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="movies">Movies</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="shows">Shows</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="about">About</a></li>
-					<li class="nav-item"><a class="nav-link h6" href="contact">Contact</a></li>
+					<li class="nav-item"><a id="homeNav" class="nav-link h6" href="home">Home</a></li>
+					<li class="nav-item"><a id="moviesNav" class="nav-link h6" href="movies">Movies</a></li>
+					<li class="nav-item"><a id="showsNav" class="nav-link h6" href="shows">Shows</a></li>
 				</ul>
+				<script type="text/javascript">setActiveNav();</script>
 				<ul class="navbar-nav">
 					<?php
 					if (!isset($userId)) {
@@ -42,8 +46,7 @@ if (isset($_SESSION['userId'])) {
 							   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-user"></i>
 							</a>
-							<div class="dropdown-menu dropdown-menu-start px-2"
-							     aria-labelledby="userDropdown">
+							<div class="dropdown-menu px-2" aria-labelledby="userDropdown" style="right: 0; left: auto">
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-dark nav-user-name">
 										<?php

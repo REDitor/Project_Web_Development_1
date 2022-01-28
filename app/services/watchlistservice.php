@@ -5,29 +5,38 @@ use repositories\WatchListRepository;
 
 class WatchListService
 {
+    private WatchListRepository $watchList_repository;
+
+    public function __construct()
+    {
+        $this->watchList_repository = new WatchListRepository();
+    }
+
     public function getListsByUserId($userId) {
-        $repository = new WatchListRepository();
-        return  $repository->getListsByUserId($userId);
+        return $this->watchList_repository->getListsByUserId($userId);
     }
 
     public function getUserIdByWatchListId($watchListId) {
-        $repository = new WatchListRepository();
-        return $repository->getUserIdByWatchListId($watchListId);
+        return $this->watchList_repository->getUserIdByWatchListId($watchListId);
     }
 
-    //for testing TODO: remove
     public function getAll() {
-        $repository = new WatchListRepository();
-        return $repository->getAll();
+        return $this->watchList_repository->getAll();
     }
 
     public function insertWatchList($watchList) {
-        $repository = new WatchListRepository();
-        $repository->insertWatchList($watchList);
+        $this->watchList_repository->insertWatchList($watchList);
     }
 
     public function deleteById($watchListId) {
-        $repository = new WatchListRepository();
-        $repository->deleteById($watchListId);
+        $this->watchList_repository->deleteById($watchListId);
+    }
+
+    public function addToList($itemId, $watchListId) {
+        $this->watchList_repository->addToList($itemId, $watchListId);
+    }
+
+    public function removeFromList($itemId, $watchListId) {
+        $this->watchList_repository->removeFromList($itemId, $watchListId);
     }
 }

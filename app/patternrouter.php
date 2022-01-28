@@ -32,7 +32,6 @@ class PatternRouter
         //get controller name from url
         $explodedUri = explode('/', $uri);
 
-
         //set controller name
         if (!isset($explodedUri[0]) || empty($explodedUri[0]))
             $explodedUri[0] = $defaultController;
@@ -43,10 +42,10 @@ class PatternRouter
             $explodedUri[1] = $defaultMethod;
         $methodName = $explodedUri[1];
 
-        //set parameter name
+        //set parameter names
         if (!isset($explodedUri[2]) || empty($explodedUri[2]))
             $explodedUri[2] = $defaultParam;
-        $paramName = $explodedUri[2];
+        $param = $explodedUri[2];
 
         //set controller directory
         $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
@@ -62,7 +61,7 @@ class PatternRouter
 
         try {
             $controllerObject = new $controllerName;
-            $controllerObject->{$methodName}($paramName);
+            $controllerObject->{$methodName}($param);
         } catch (Exception $e) {
             http_response_code(404);
             die();

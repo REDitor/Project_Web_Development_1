@@ -1,5 +1,5 @@
-<footer class="footer bg-dark bottom-0 w-100">
-	<section class="social py-3 px-2 m-auto">
+<footer class="footer bg-dark bottom-0 w-100 text-center">
+	<section class="social py-3 px-4 m-auto">
 		<a class="text-danger" href="#"><i class="fab fa-facebook fa-2x"></i></a>
 		<a class="text-danger" href="#"><i class="fab fa-twitter fa-2x"></i></a>
 		<a class="text-danger" href="#"><i class="fab fa-youtube fa-2x"></i></a>
