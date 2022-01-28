@@ -48,9 +48,9 @@ class PatternRouter
         $param = $explodedUri[2];
 
         //set controller directory
-        $filename = 'controllers/' . $controllerName . '.php';
+        $filename = __DIR__ . 'controllers/' . $controllerName . '.php';
         if ($api)
-            $filename = 'api/controllers/' . $controllerName . '.php';
+            $filename = __DIR__ . 'api/controllers/' . $controllerName . '.php';
 
         if (file_exists($filename)) {
             require $filename;
