@@ -1,8 +1,4 @@
 <?php
-namespace app;
-
- use PDO;
- use PDOException;
 
  class Database extends PDO {
      private static Database $instance;

@@ -1,7 +1,7 @@
 <?php
 namespace repositories;
 
-use app\Database;
+use Database;
 
 class Repository
 {

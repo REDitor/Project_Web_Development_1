@@ -1,7 +1,4 @@
 <?php
-namespace app;
-
-use Exception;
 
 class PatternRouter
 {
