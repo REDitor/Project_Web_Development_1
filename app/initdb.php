@@ -1,4 +1,7 @@
 <?php
+
+use app\Database;
+
 include_once 'database.php';
 
 $database = Database::getInstance();
