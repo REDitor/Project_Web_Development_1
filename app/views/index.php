@@ -3,9 +3,6 @@
 use models\User;
 use services\UserService;
 
-require_once __DIR__ . '/../services/userservice.php';
-require_once __DIR__ . '/../models/user.php';
-
 //register user
 if (isset($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];
@@ -33,9 +30,7 @@ if (isset($_SESSION['userId'])) {
 		echo "<script>alert('Please fill in all the fields!')</script>";
 	}
 }
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+
 ?>
 
 <!DOCTYPE html>
