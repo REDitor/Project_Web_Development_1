@@ -1,6 +1,7 @@
 <?php
-
 use app\Database;
+
+include 'autoload.php';
 
 $database = Database::getInstance();
 
