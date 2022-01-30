@@ -31,12 +31,25 @@ namespace app;
      }
 
      static function getConfig() {
-         return [
-             'hostname' => $_ENV['PHP_DB_HOST'],
-             'port' => 3306,
-             'username' => $_ENV['MYSQL_USER'],
-             'password' => $_ENV['MYSQL_ROOT_PASSWORD'],
-             'name' => $_ENV['MYSQL_DATABASE']
-         ];
+         if (getenv('DATABASE_URL') != "") {
+             $herokuDb = parse_url(getenv('DATABASE_URL'));
+             $dbopts = [
+               'type' => $herokuDb['host'],
+               'hostname' => $herokuDb['user'],
+               'username' => $herokuDb['pass'],
+               'name' => ltrim($herokuDb['path'], '/')
+             ];
+         }
+
+         else {
+             $dbopts = [
+                 'hostname' => $_ENV['PHP_DB_HOST'],
+                 'port' => 3306,
+                 'username' => $_ENV['MYSQL_USER'],
+                 'password' => $_ENV['MYSQL_ROOT_PASSWORD'],
+                 'name' => $_ENV['MYSQL_DATABASE']
+             ];
+         }
+         return $dbopts;
      }
  }
